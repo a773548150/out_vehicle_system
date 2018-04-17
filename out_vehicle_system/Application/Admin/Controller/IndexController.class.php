@@ -29,10 +29,10 @@ class IndexController extends BaseController {
             $username = I('post.username');
             setcookie("username", $username, time() + 3600*24*7,"/");
             $this->ajaxReturn("登录成功");
-            $this->display("/login/login");
+            $this->display("/login");
         } else {
             $this->ajaxReturn("登录失败");
-            $this->display("/login/login");
+            $this->display("/login");
         }
     }
 
@@ -43,10 +43,29 @@ class IndexController extends BaseController {
     }
 
     public function toLogin() {
-        $this->display("/login/login");
+        $this->display("/login");
     }
 
     public function toSignUp() {
         $this->display("/signUp");
+    }
+
+    public function toAlertPassword() {
+        $this->display("/alertPassword");
+    }
+    public function alertPassword() {
+        $m = D("Manager");
+        $rs = $m->alertPassword();
+        echo $rs;
+    }
+
+    public function toOrder() {
+        $goods = A("Order");
+        $goods->goods();
+        $this->display("/order");
+    }
+
+    public function toOrderManager() {
+        $this->display("/orderManager");
     }
 }

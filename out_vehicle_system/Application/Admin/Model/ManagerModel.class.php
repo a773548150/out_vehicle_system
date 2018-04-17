@@ -27,4 +27,21 @@ class ManagerModel extends BaseModel {
         $result = $m->data($up)->add();
         return $result;
     }
+
+    public function alertPassword() {
+        $m = M("manager");
+        $data['username'] = I('post.username');
+        $data['password'] = md5(I('post.oldPassword'));
+        $result = $m->where($data)->getField('id');
+
+        if ($result === "1") {
+            $data2['password'] = md5(I('post.newPassword'));
+            $result2 = $m->where(array('id'=>$result))->save($data2);
+            if ($result2 === 1) {
+                return 1;
+            }
+        } else {
+            return 2; //密码错误
+        }
+    }
 }

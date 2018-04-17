@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-04-14 21:16:28
+Date: 2018-04-17 21:29:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -89,19 +89,21 @@ CREATE TABLE `t_goods` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `number` varchar(20) NOT NULL,
   `name` varchar(20) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `real_quantity` int(11) NOT NULL,
+  `quantity` double(15,6) NOT NULL,
+  `real_quantity` double(15,6) NOT NULL,
   `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `Num_uq` (`number`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_goods
 -- ----------------------------
+INSERT INTO `t_goods` VALUES ('1', 'A101', '石油', '1.100000', '0.990000', '0000-00-00 00:00:00', '2018-04-17 16:28:12', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_goods` VALUES ('2', 'A102', '煤', '2.200000', '2.178450', '0000-00-00 00:00:00', '2018-04-17 16:31:10', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for t_group
@@ -164,26 +166,40 @@ CREATE TABLE `t_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `number` varchar(20) NOT NULL,
   `udid` varchar(20) NOT NULL,
-  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `start_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `out_number` varchar(10) NOT NULL,
-  `out_destination` varchar(20) NOT NULL,
-  `order_driver_number` varchar(20) NOT NULL,
-  `pick_up_order` varchar(20) NOT NULL,
-  `contract_number` varchar(20) NOT NULL,
-  `out_of_stock_message` varchar(20) NOT NULL,
-  `pick_up_quantity` int(11) NOT NULL,
-  `closing_unit` varchar(10) NOT NULL,
+  `create_time` datetime DEFAULT '0000-00-00 00:00:00',
+  `start_time` datetime DEFAULT '0000-00-00 00:00:00',
+  `out_number` varchar(10) DEFAULT NULL,
+  `out_destination` varchar(20) DEFAULT NULL,
+  `mission_status` tinyint(4) NOT NULL DEFAULT '0',
+  `order_driver_number` varchar(20) DEFAULT NULL,
+  `pick_up_order` varchar(20) DEFAULT NULL,
+  `goods_name` varchar(20) DEFAULT NULL,
+  `contract_number` varchar(20) DEFAULT NULL,
+  `out_of_stock_message` varchar(20) DEFAULT NULL,
+  `pick_up_quantity` int(11) DEFAULT NULL,
+  `closing_unit` varchar(10) DEFAULT NULL,
   `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `NumUd_uq` (`number`,`udid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
+INSERT INTO `t_order` VALUES ('1', '20180417053212585842', '', '0000-00-00 00:00:00', '2018-04-17 17:32:00', '12', '地方上的12', '0', null, null, '', null, null, null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('2', '', '', '2018-04-17 05:41:13', '2018-04-17 17:41:00', '12', '割发代首102', '0', null, null, '', null, null, null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('4', '20180417055352254083', '', '2018-04-17 05:54:01', '2018-04-17 17:53:00', '12', '水电费12', '0', null, null, '', null, null, null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('5', '20180417055653975555', '', '2018-04-17 05:57:02', '2018-04-17 17:56:00', '54', '12', '0', null, null, '石油', null, null, null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('7', '20180417060041974813', '', '2018-04-17 06:00:50', '2018-04-17 18:00:00', '4564', '的12', '0', null, null, '煤', null, null, null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('10', '20180417070938662445', '', '2018-04-17 07:09:47', '2018-04-17 19:09:00', '', '地方125', '0', null, null, '石油', null, null, null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('12', '20180417071023576586', '', '2018-04-17 07:10:30', '2018-04-17 19:10:00', '', '水电费12', '0', null, null, '石油', null, null, null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('13', '20180417071040449255', '', '2018-04-17 07:10:49', '2018-04-17 19:10:00', '', '水电费23', '0', null, null, '石油', null, null, null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('14', '20180417074228369741', '', '2018-04-17 07:42:54', '2018-04-17 19:42:00', '', '1654', '0', null, null, '石油', null, null, null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('15', '20180417075330120352', '', '2018-04-17 07:53:30', '2018-04-17 19:53:00', '', 'dsf513', '0', null, null, '煤', null, null, null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('16', '20180417075656655358', '', '2018-04-17 07:56:56', '0000-00-00 00:00:00', '1564', 'dsf23', '0', null, null, '煤', null, null, null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('17', '20180417075849283471', '', '2018-04-17 07:58:49', '2018-04-17 19:58:00', '9787', 'fds10531', '0', null, null, '煤', null, null, null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for t_privilege
