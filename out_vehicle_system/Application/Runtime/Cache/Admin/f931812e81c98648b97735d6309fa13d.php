@@ -52,7 +52,7 @@
         <div class="layui-form-item toInline">
             <label class="layui-form-label">类型</label>
             <div class="layui-input-block">
-                <select name="orderStatus" lay-verify="required" lay-filter="selectStatus">
+                <select name="orderStatus" lay-verify="required" lay-filter="selectStatus" >
                     <option value="3" id="orderStauts">全部</option>
                     <option value="0" id="orderStauts0">未接</option>
                     <option value="1" id="orderStauts1">已接</option>
@@ -75,49 +75,55 @@
         </div>
     </form>
 
-    <table class="layui-table">
-        <colgroup>
-            <col>
-            <col>
-            <col>
-        </colgroup>
-        <thead>
-            <tr>
-                <th>订单号</th>
-                <th>出发时间</th>
-                <th>出车车牌号</th>
-                <th>目的地</th>
-                <th>状态</th>
-                <th>司机编号</th>
-                <th>提货单号</th>
-                <th>合同号</th>
-                <th>缺货信息</th>
-                <th>提货数量</th>
-                <th>提货时间</th>
-                <th>结算单位</th>
-            </tr>
-        </thead>
-        <tbody>
+    <!--<table id="order" lay-filter="order" class="layui-table">-->
+        <!--<colgroup>-->
+            <!--<col>-->
+            <!--<col>-->
+            <!--<col>-->
+        <!--</colgroup>-->
+        <!--<thead>-->
+            <!--<tr>-->
+                <!--<th>订单号</th>-->
+                <!--<th>出发时间</th>-->
+                <!--<th>出车车牌号</th>-->
+                <!--<th>目的地</th>-->
+                <!--<th>状态</th>-->
+                <!--<th>司机编号</th>-->
+                <!--<th>提货单号</th>-->
+                <!--<th>合同号</th>-->
+                <!--<th>缺货信息</th>-->
+                <!--<th>提货数量</th>-->
+                <!--<th>提货时间</th>-->
+                <!--<th>结算单位</th>-->
+            <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
 
-            <?php if(is_array($orderMessage)): foreach($orderMessage as $key=>$vo): ?><tr>
-                    <td><?php echo ($vo["number"]); ?></td>
-                    <td><?php echo ($vo["create_time"]); ?></td>
-                    <td><?php echo ($vo["out_number"]); ?></td>
-                    <td><?php echo ($vo["out_destination"]); ?></td>
-                    <td><?php echo ($vo["mission_status"]); ?></td>
-                    <td><?php echo ($vo["order_driver_number"]); ?></td>
-                    <td><?php echo ($vo["pick_up_order"]); ?></td>
-                    <td><?php echo ($vo["contract_number"]); ?></td>
-                    <td><?php echo ($vo["out_of_stock_message"]); ?></td>
-                    <td><?php echo ($vo["pick_up_quantity"]); ?></td>
-                    <td><?php echo ($vo["pick_up_time"]); ?></td>
-                    <td><?php echo ($vo["closing_unit"]); ?></td>
-                </tr><?php endforeach; endif; ?>
+            <!--<?php if(is_array($orderMessage)): foreach($orderMessage as $key=>$vo): ?>-->
+                <!--<tr>-->
+                    <!--<td><?php echo ($vo["number"]); ?></td>-->
+                    <!--<td><?php echo ($vo["create_time"]); ?></td>-->
+                    <!--<td><?php echo ($vo["out_number"]); ?></td>-->
+                    <!--<td><?php echo ($vo["out_destination"]); ?></td>-->
+                    <!--<td><?php echo ($vo["mission_status"]); ?></td>-->
+                    <!--<td><?php echo ($vo["order_driver_number"]); ?></td>-->
+                    <!--<td><?php echo ($vo["pick_up_order"]); ?></td>-->
+                    <!--<td><?php echo ($vo["contract_number"]); ?></td>-->
+                    <!--<td><?php echo ($vo["out_of_stock_message"]); ?></td>-->
+                    <!--<td><?php echo ($vo["pick_up_quantity"]); ?></td>-->
+                    <!--<td><?php echo ($vo["pick_up_time"]); ?></td>-->
+                    <!--<td><?php echo ($vo["closing_unit"]); ?></td>-->
+                <!--</tr>-->
+            <!--<?php endforeach; endif; ?>-->
 
-        </tbody>
-    </table>
+        <!--</tbody>-->
+    <!--</table>-->
 
-
+    <table id="order" lay-filter="test"></table>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
 </div>
 
 <script src="/Public/layui/layui.js"></script>

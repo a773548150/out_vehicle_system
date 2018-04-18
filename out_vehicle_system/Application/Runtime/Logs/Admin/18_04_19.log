@@ -1,0 +1,245 @@
+[ 2018-04-19T00:01:13+08:00 ] 127.0.0.1 /Admin/Index/toOrderManager
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000082s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001594s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002858s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003236s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000122s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000253s ]
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\out_vehicle_system\Application\Runtime\Cache\Admin\f931812e81c98648b97735d6309fa13d.php 第 102 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.041717s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041855s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000915s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000996s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001405s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001483s ]
+
+[ 2018-04-19T00:01:14+08:00 ] 127.0.0.1 /Admin/Order/searchOrder?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001190s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002112s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002259s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `t_order` LIMIT 0,11   [ RunTime:0.0010s ]
+
+[ 2018-04-19T00:03:59+08:00 ] 127.0.0.1 /Admin/Index/toOrderManager
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001255s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005941s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006215s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000164s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000374s ]
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\out_vehicle_system\Application\Runtime\Cache\Admin\f931812e81c98648b97735d6309fa13d.php 第 102 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030601s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030704s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000989s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001060s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001653s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001732s ]
+
+[ 2018-04-19T00:04:00+08:00 ] 127.0.0.1 /Admin/Order/searchOrder?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000832s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002078s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002257s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `t_order` LIMIT 0,11   [ RunTime:0.0008s ]
+
+[ 2018-04-19T00:11:01+08:00 ] 127.0.0.1 /Admin/Order/searchOrder?page=2&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001160s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002129s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002269s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0021s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0014s ]
+SQL: SELECT * FROM `t_order` LIMIT 11,11   [ RunTime:0.0008s ]
+
+[ 2018-04-19T00:11:02+08:00 ] 127.0.0.1 /Admin/Order/searchOrder?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000704s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001088s ]
+
+[ 2018-04-19T00:11:05+08:00 ] 127.0.0.1 /Admin/Index/toOrder
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000897s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001689s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001928s ]
+
+[ 2018-04-19T00:11:08+08:00 ] 127.0.0.1 /Admin/Order/searchOrder?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001476s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001608s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001844s ]
+
+[ 2018-04-19T00:11:27+08:00 ] 127.0.0.1 /Admin/Index/toOrderManager
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000758s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001006s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001103s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000464s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001646s ]
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\out_vehicle_system\Application\Runtime\Cache\Admin\f931812e81c98648b97735d6309fa13d.php 第 102 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027754s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027872s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001071s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001189s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001836s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001965s ]
+
+[ 2018-04-19T00:11:28+08:00 ] 127.0.0.1 /Admin/Order/searchOrder?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000130s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002548s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001574s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001721s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `t_order` LIMIT 0,11   [ RunTime:0.0009s ]
+
+[ 2018-04-19T00:11:30+08:00 ] 127.0.0.1 /Admin/Order/searchOrder?page=2&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001196s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001596s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001752s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `t_order` LIMIT 11,11   [ RunTime:0.0008s ]
+
+[ 2018-04-19T00:11:31+08:00 ] 127.0.0.1 /Admin/Order/searchOrder?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000971s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001203s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001318s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0014s ]
+SQL: SELECT * FROM `t_order` LIMIT 0,11   [ RunTime:0.0010s ]
+
+[ 2018-04-19T00:17:38+08:00 ] 127.0.0.1 /Admin/Index/toOrderManager
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001119s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001320s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001451s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000150s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000291s ]
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\out_vehicle_system\Application\Runtime\Cache\Admin\f931812e81c98648b97735d6309fa13d.php 第 102 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.037966s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.038163s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001140s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001263s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001275s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001352s ]
+
+[ 2018-04-19T00:17:39+08:00 ] 127.0.0.1 /Admin/Order/searchOrder?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001623s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001998s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002176s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0022s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0014s ]
+SQL: SELECT * FROM `t_order` LIMIT 0,11   [ RunTime:0.0009s ]
+
+[ 2018-04-19T00:18:04+08:00 ] 127.0.0.1 /Admin/Order/editOrder
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001008s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001853s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001971s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0012s ]
+SQL: UPDATE `t_order` SET `out_destination`='水电费1' WHERE ( 4 ) [ RunTime:0.0116s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001586s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001679s ]
+
+[ 2018-04-19T00:19:48+08:00 ] 127.0.0.1 /Admin/Index/toOrderManager
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003155s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003353s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003636s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000173s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000321s ]
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\out_vehicle_system\Application\Runtime\Cache\Admin\f931812e81c98648b97735d6309fa13d.php 第 102 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029027s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029124s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000870s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000948s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001383s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001461s ]
+
+[ 2018-04-19T00:19:50+08:00 ] 127.0.0.1 /Admin/Order/searchOrder?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001366s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002030s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002303s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `t_order` LIMIT 0,11   [ RunTime:0.0008s ]
+
+[ 2018-04-19T00:20:04+08:00 ] 127.0.0.1 /Admin/Order/editOrder
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000799s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001250s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001336s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0012s ]
+SQL: UPDATE `t_order` SET `out_destination`='水电费4' WHERE `id` = 4 [ RunTime:0.0089s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001522s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001617s ]
+

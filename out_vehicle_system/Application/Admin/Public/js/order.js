@@ -40,19 +40,6 @@ $(window).ready(function(){
         });
     });
 
-    $("#makeNumber").click(function() {
-        $.ajax({
-            url: "/Admin/Order/orderNumber",
-            type: 'post',
-            dataType: 'text',
-            success: function (data) {
-                $("#orderNumber").val(data);
-            },
-            fail: function (err, status) {
-                console.log(err);
-            }
-        });
-    });
 
     // $("#submit").click(function(){
     //     var datas = {};
