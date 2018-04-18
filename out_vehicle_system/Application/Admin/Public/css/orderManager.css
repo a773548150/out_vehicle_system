@@ -1,0 +1,8 @@
+.top-nav{
+    position: absolute;
+    left: 200px;
+}
+
+.toInline{
+    display: inline-block;
+}

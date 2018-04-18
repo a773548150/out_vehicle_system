@@ -53,6 +53,10 @@ class IndexController extends BaseController {
     public function toAlertPassword() {
         $this->display("/alertPassword");
     }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 81dd184c367785aea490d1b63e7562094aec8e67
     public function alertPassword() {
         $m = D("Manager");
         $rs = $m->alertPassword();
@@ -66,6 +70,14 @@ class IndexController extends BaseController {
     }
 
     public function toOrderManager() {
+<<<<<<< HEAD
+        $type = A('Order');
+        $type->searchType();
         $this->display("/orderManager");
     }
+
+=======
+        $this->display("/orderManager");
+    }
+>>>>>>> 81dd184c367785aea490d1b63e7562094aec8e67
 }
