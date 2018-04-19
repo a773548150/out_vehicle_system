@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : hiaocong
-Source Server Version : 50721
+Source Server         : localhost
+Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : db_out_vehicle_system
 
 Target Server Type    : MYSQL
-Target Server Version : 50721
+Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-04-19 00:21:18
+Date: 2018-04-19 23:20:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,7 +22,8 @@ DROP TABLE IF EXISTS `t_driver`;
 CREATE TABLE `t_driver` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '默认自增id',
   `number` varchar(20) NOT NULL DEFAULT '0' COMMENT '司机编号',
-  `mobile_number` int(11) NOT NULL COMMENT '手机号',
+  `name` varchar(20) NOT NULL COMMENT '司机姓名',
+  `mobile_number` varchar(11) NOT NULL COMMENT '手机号',
   `password` varchar(32) NOT NULL COMMENT '司机密码',
   `head_path` varchar(100) NOT NULL DEFAULT '0' COMMENT '头像保存路径',
   `join_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '加入的时间',
@@ -33,11 +34,13 @@ CREATE TABLE `t_driver` (
   `session_id` varchar(26) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `N_Q` (`number`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_driver
 -- ----------------------------
+INSERT INTO `t_driver` VALUES ('1', '20180419075911247106', '林夏聪', '13794578316', '202cb962ac59075b964b07152d234b70', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
+INSERT INTO `t_driver` VALUES ('2', '20180419075938104971', '林聪', '13794578311', '202cb962ac59075b964b07152d234b70', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
 
 -- ----------------------------
 -- Table structure for t_driver_order
@@ -189,17 +192,19 @@ CREATE TABLE `t_order` (
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('4', '20180417055352254083', '', '2018-04-17 05:54:01', '2018-04-17 17:53:00', '12', '水电费4', '2', null, null, '', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('7', '20180417060041974813', '', '2018-04-17 06:00:50', '2018-04-17 18:00:00', '4564', '水', '0', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('10', '20180417070938662445', '', '2018-04-17 07:09:47', '2018-04-17 19:09:00', '', '水电费', '0', null, null, '石油', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('12', '20180417071023576586', '', '2018-04-17 07:10:30', '2018-04-17 19:10:00', '', '电费1', '2', null, null, '石油', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('13', '20180417071040449255', '', '2018-04-17 07:10:49', '2018-04-17 19:10:00', '', '水费1', '0', null, null, '石油', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('14', '20180417074228369741', '', '2018-04-17 07:42:54', '2018-04-17 19:42:00', '', '是的', '0', null, null, '石油', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('15', '20180417075330120352', '', '2018-04-17 07:53:30', '2018-04-17 19:53:00', '', '我', '1', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('16', '20180417075656655358', '', '2018-04-17 07:56:56', '0000-00-00 00:00:00', '1564', '他1', '0', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('17', '20180417075849283471', '', '2018-04-17 07:58:49', '2018-04-17 19:58:00', '9787', '水电是的费的', '2', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('18', '20180418093940779284', '20180418093940737344', '2018-04-18 09:39:40', '2018-04-18 21:39:00', '12', '去', '0', null, null, '石油', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('19', '20180418094042201788', '20180418094042143368', '2018-04-18 09:40:42', '2018-04-18 21:40:00', '121', '广告', '0', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('1', '20180417053212585842', '', '0000-00-00 00:00:00', '2018-04-17 17:32:00', '12', '地方上的12', '0', null, null, '', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('4', '20180417055352254083', '', '2018-04-17 05:54:01', '2018-04-17 17:53:00', '12', '水电费12', '2', null, null, '', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('5', '20180417055653975555', '', '2018-04-17 05:57:02', '2018-04-17 17:56:00', '54', '12', '1', null, null, '石油', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('7', '20180417060041974813', '', '2018-04-17 06:00:50', '2018-04-17 18:00:00', '4564', '的12', '0', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('10', '20180417070938662445', '', '2018-04-17 07:09:47', '2018-04-17 19:09:00', '', '地方125', '0', null, null, '石油', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('12', '20180417071023576586', '', '2018-04-17 07:10:30', '2018-04-17 19:10:00', '', '水电费12', '2', null, null, '石油', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('13', '20180417071040449255', '', '2018-04-17 07:10:49', '2018-04-17 19:10:00', '', '水电费23', '0', null, null, '石油', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('14', '20180417074228369741', '', '2018-04-17 07:42:54', '2018-04-17 19:42:00', '', '1654', '0', null, null, '石油', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('15', '20180417075330120352', '', '2018-04-17 07:53:30', '2018-04-17 19:53:00', '', 'dsf513', '1', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('16', '20180417075656655358', '', '2018-04-17 07:56:56', '0000-00-00 00:00:00', '1564', 'dsf23', '0', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('17', '20180417075849283471', '', '2018-04-17 07:58:49', '2018-04-17 19:58:00', '9787', 'fds10531', '2', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('18', '20180419065930752203', '20180419065930626107', '2018-04-19 06:59:30', '2018-04-19 18:59:00', '25', '是滴是滴12', '0', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('19', '20180419070110705126', '20180419070110472903', '2018-04-19 07:01:10', '2018-04-19 19:01:00', '236', '是滴是12', '0', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for t_privilege
@@ -273,7 +278,7 @@ CREATE TABLE `t_role_privilege` (
 DROP TABLE IF EXISTS `t_vehicle`;
 CREATE TABLE `t_vehicle` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `license_plate` varchar(10) NOT NULL,
+  `license_plate` varchar(7) NOT NULL,
   `vin` varchar(17) NOT NULL,
   `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -281,11 +286,14 @@ CREATE TABLE `t_vehicle` (
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `LicVin_uq` (`license_plate`,`vin`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_vehicle
 -- ----------------------------
+INSERT INTO `t_vehicle` VALUES ('1', '粤A13145', 'ALSDK265SFSD15456', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_vehicle` VALUES ('2', '粤A23146', 'DFLS4K26152345456', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_vehicle` VALUES ('3', '粤A83166', 'YERDK265SFSD15456', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for t_vehicle_goods

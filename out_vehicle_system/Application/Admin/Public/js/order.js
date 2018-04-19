@@ -20,7 +20,8 @@ $(window).ready(function(){
                 dataType: 'json',
                 data: datas,
                 success: function (data, status) {
-                    alert(data);
+                    alert("添加成功");
+                    window.location = "/Admin/Index/toOrder";
                 },
                 fail: function (err, status) {
                     console.log(err)

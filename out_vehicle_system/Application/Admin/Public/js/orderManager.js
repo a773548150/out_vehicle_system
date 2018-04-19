@@ -8,7 +8,7 @@
 
 $(window).ready(function() {
     //全局变量
-    var url = "/Admin/Order/searchOrder";
+    var url = "/Admin/Order/searchOrder?missionStatus=3";
     var editData = "";
 
     layui.use('element', function () {

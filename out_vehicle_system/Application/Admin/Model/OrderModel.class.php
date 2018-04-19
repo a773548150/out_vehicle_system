@@ -46,6 +46,10 @@ class OrderModel extends BaseModel {
         if ($data['mission_status'] === "0" || $data['mission_status'] === "1" || $data['mission_status'] === "2") {
             $result = $m->where($data)->page($page, $limit)->select();
             return $result;
+        } else if($data['mission_status'] === "3"){
+            unset($data['mission_status']);
+            $result = $m->where($data)->page($page, $limit)->select();
+            return $result;
         } else {
             $result = $m->page($page, $limit)->select();
             return $result;

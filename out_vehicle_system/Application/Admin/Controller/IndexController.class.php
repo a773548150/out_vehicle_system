@@ -67,10 +67,17 @@ class IndexController extends BaseController {
     }
 
     public function toOrderManager() {
-        $type = A('Order');
+//        $type = A('Order');
 //        $type->searchType();
       //  $type->searchOrder();
         $this->display("/orderManager");
     }
 
+    public function toDriver() {
+        $this->display("/driver");
+    }
+
+    public function toVehicle() {
+        $this->display("/vehicle");
+    }
 }
