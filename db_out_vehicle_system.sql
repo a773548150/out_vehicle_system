@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-04-19 23:20:02
+Date: 2018-04-20 23:37:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,34 +34,13 @@ CREATE TABLE `t_driver` (
   `session_id` varchar(26) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `N_Q` (`number`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_driver
 -- ----------------------------
 INSERT INTO `t_driver` VALUES ('1', '20180419075911247106', '林夏聪', '13794578316', '202cb962ac59075b964b07152d234b70', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
 INSERT INTO `t_driver` VALUES ('2', '20180419075938104971', '林聪', '13794578311', '202cb962ac59075b964b07152d234b70', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
-
--- ----------------------------
--- Table structure for t_driver_order
--- ----------------------------
-DROP TABLE IF EXISTS `t_driver_order`;
-CREATE TABLE `t_driver_order` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
-  `driver_id` int(11) NOT NULL COMMENT '外键司机id',
-  `order_id` int(11) NOT NULL COMMENT '外键订单id唯一',
-  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建记录时插入时间',
-  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改记录时插入当前时间',
-  PRIMARY KEY (`id`),
-  KEY `DO_ID` (`driver_id`),
-  KEY `DD_ID` (`order_id`),
-  CONSTRAINT `DD_ID` FOREIGN KEY (`order_id`) REFERENCES `t_order` (`id`),
-  CONSTRAINT `DO_ID` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_driver_order
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for t_driver_vehicle
@@ -123,43 +102,28 @@ CREATE TABLE `t_group` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for t_group_driver
--- ----------------------------
-DROP TABLE IF EXISTS `t_group_driver`;
-CREATE TABLE `t_group_driver` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `group_id` int(11) NOT NULL,
-  `driver_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `GPD_ID` (`group_id`),
-  KEY `GPDD_ID` (`driver_id`),
-  CONSTRAINT `GPDD_ID` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`),
-  CONSTRAINT `GPD_ID` FOREIGN KEY (`group_id`) REFERENCES `t_group` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_group_driver
--- ----------------------------
-
--- ----------------------------
 -- Table structure for t_manager
 -- ----------------------------
 DROP TABLE IF EXISTS `t_manager`;
 CREATE TABLE `t_manager` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
-  `username` varchar(5) NOT NULL COMMENT '管理员账号',
+  `username` varchar(20) NOT NULL COMMENT '管理员账号',
   `password` varchar(32) NOT NULL COMMENT '管理员密码',
+  `role_id` int(11) NOT NULL,
+  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改记录时插入当前时间',
   `session_id` varchar(26) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `User_uq` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  UNIQUE KEY `User_uq` (`username`),
+  CONSTRAINT `df_DF` FOREIGN KEY (`id`) REFERENCES `t_role` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_manager
 -- ----------------------------
-INSERT INTO `t_manager` VALUES ('1', 'admin', '202cb962ac59075b964b07152d234b70', '0000-00-00 00:00:00', '0');
-INSERT INTO `t_manager` VALUES ('2', '123', '250cf8b51c773f3f8dc8b4be867a9a02', '0000-00-00 00:00:00', '0');
+INSERT INTO `t_manager` VALUES ('1', 'admin', '202cb962ac59075b964b07152d234b70', '7', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
+INSERT INTO `t_manager` VALUES ('2', '123', '250cf8b51c773f3f8dc8b4be867a9a02', '2', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
+INSERT INTO `t_manager` VALUES ('3', 'xiaoming', '202cb962ac59075b964b07152d234b70', '2', '2018-04-20 10:28:19', '0000-00-00 00:00:00', '0');
 
 -- ----------------------------
 -- Table structure for t_order
@@ -171,14 +135,15 @@ CREATE TABLE `t_order` (
   `udid` varchar(20) NOT NULL,
   `create_time` datetime DEFAULT '0000-00-00 00:00:00',
   `start_time` datetime DEFAULT '0000-00-00 00:00:00',
-  `out_number` varchar(10) DEFAULT NULL,
   `out_destination` varchar(20) DEFAULT NULL,
   `mission_status` tinyint(4) NOT NULL DEFAULT '0',
-  `order_driver_number` varchar(20) DEFAULT NULL,
   `pick_up_order` varchar(20) DEFAULT NULL,
-  `goods_name` varchar(20) DEFAULT NULL,
+  `goods_id` int(11) DEFAULT NULL,
+  `vehicle_id` int(11) DEFAULT NULL,
+  `driver_id` int(11) DEFAULT NULL,
   `contract_number` varchar(20) DEFAULT NULL,
   `out_of_stock_message` varchar(20) DEFAULT NULL,
+  `goods_quantity` int(11) DEFAULT NULL,
   `pick_up_quantity` int(11) DEFAULT NULL,
   `pick_up_time` datetime DEFAULT '0000-00-00 00:00:00',
   `closing_unit` varchar(10) DEFAULT NULL,
@@ -186,39 +151,32 @@ CREATE TABLE `t_order` (
   `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `NumUd_uq` (`number`,`udid`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+  UNIQUE KEY `NumUd_uq` (`number`,`udid`),
+  KEY `OG_ID` (`goods_id`),
+  KEY `OR_ID` (`driver_id`),
+  KEY `OV_ID` (`vehicle_id`),
+  CONSTRAINT `OG_ID` FOREIGN KEY (`goods_id`) REFERENCES `t_goods` (`id`),
+  CONSTRAINT `OR_ID` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`),
+  CONSTRAINT `OV_ID` FOREIGN KEY (`vehicle_id`) REFERENCES `t_vehicle` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('1', '20180417053212585842', '', '0000-00-00 00:00:00', '2018-04-17 17:32:00', '12', '地方上的12', '0', null, null, '', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('4', '20180417055352254083', '', '2018-04-17 05:54:01', '2018-04-17 17:53:00', '12', '水电费12', '2', null, null, '', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('5', '20180417055653975555', '', '2018-04-17 05:57:02', '2018-04-17 17:56:00', '54', '12', '1', null, null, '石油', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('7', '20180417060041974813', '', '2018-04-17 06:00:50', '2018-04-17 18:00:00', '4564', '的12', '0', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('10', '20180417070938662445', '', '2018-04-17 07:09:47', '2018-04-17 19:09:00', '', '地方125', '0', null, null, '石油', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('12', '20180417071023576586', '', '2018-04-17 07:10:30', '2018-04-17 19:10:00', '', '水电费12', '2', null, null, '石油', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('13', '20180417071040449255', '', '2018-04-17 07:10:49', '2018-04-17 19:10:00', '', '水电费23', '0', null, null, '石油', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('14', '20180417074228369741', '', '2018-04-17 07:42:54', '2018-04-17 19:42:00', '', '1654', '0', null, null, '石油', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('15', '20180417075330120352', '', '2018-04-17 07:53:30', '2018-04-17 19:53:00', '', 'dsf513', '1', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('16', '20180417075656655358', '', '2018-04-17 07:56:56', '0000-00-00 00:00:00', '1564', 'dsf23', '0', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('17', '20180417075849283471', '', '2018-04-17 07:58:49', '2018-04-17 19:58:00', '9787', 'fds10531', '2', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('18', '20180419065930752203', '20180419065930626107', '2018-04-19 06:59:30', '2018-04-19 18:59:00', '25', '是滴是滴12', '0', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('19', '20180419070110705126', '20180419070110472903', '2018-04-19 07:01:10', '2018-04-19 19:01:00', '236', '是滴是12', '0', null, null, '煤', null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-
--- ----------------------------
--- Table structure for t_privilege
--- ----------------------------
-DROP TABLE IF EXISTS `t_privilege`;
-CREATE TABLE `t_privilege` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_privilege
--- ----------------------------
+INSERT INTO `t_order` VALUES ('1', '20180417053212585842', '', '0000-00-00 00:00:00', '2018-04-17 17:32:00', '地方上的12', '0', null, '1', null, null, null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('4', '20180417055352254083', '', '2018-04-17 05:54:01', '2018-04-17 17:53:00', '水电费12', '2', null, '1', '2', '1', null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('5', '20180417055653975555', '', '2018-04-17 05:57:02', '2018-04-17 17:56:00', '12', '1', null, '1', '3', '2', null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('7', '20180417060041974813', '', '2018-04-17 06:00:50', '2018-04-17 18:00:00', '的12', '0', null, '2', null, null, null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('10', '20180417070938662445', '', '2018-04-17 07:09:47', '2018-04-17 19:09:00', '地方125', '0', null, '1', null, null, null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('12', '20180417071023576586', '', '2018-04-17 07:10:30', '2018-04-17 19:10:00', '水电费12', '2', null, '1', '1', '1', null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('13', '20180417071040449255', '', '2018-04-17 07:10:49', '2018-04-17 19:10:00', '水电费23', '0', null, '1', null, null, null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('14', '20180417074228369741', '', '2018-04-17 07:42:54', '2018-04-17 19:42:00', '1654', '0', null, '2', null, null, null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('15', '20180417075330120352', '', '2018-04-17 07:53:30', '2018-04-17 19:53:00', 'dsf513', '1', null, '1', '2', '2', null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('16', '20180417075656655358', '', '2018-04-17 07:56:56', '0000-00-00 00:00:00', 'dsf23', '0', null, '1', null, null, null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('17', '20180417075849283471', '', '2018-04-17 07:58:49', '2018-04-17 19:58:00', 'fds10531', '2', null, '1', '3', '1', null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('18', '20180419065930752203', '20180419065930626107', '2018-04-19 06:59:30', '2018-04-19 18:59:00', '是滴是滴12', '0', null, '1', null, null, null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('19', '20180419070110705126', '20180419070110472903', '2018-04-19 07:01:10', '2018-04-19 19:01:00', '是滴是12', '0', null, '1', null, null, null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('20', '20180420083726910626', '20180420083726681698', '2018-04-20 08:37:26', '2018-04-20 20:37:00', '惠州学院', '0', null, '1', null, null, null, null, '100', null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for t_role
@@ -227,50 +185,27 @@ DROP TABLE IF EXISTS `t_role`;
 CREATE TABLE `t_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `manage_order` tinyint(4) NOT NULL DEFAULT '1',
+  `manage_driver` tinyint(4) NOT NULL DEFAULT '1',
+  `manage_vehicle` tinyint(4) NOT NULL DEFAULT '1',
+  `manage_role` tinyint(4) NOT NULL DEFAULT '1',
+  `manage_diary` tinyint(4) NOT NULL DEFAULT '1',
+  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `create_time` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `NAME_Q` (`name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_role
 -- ----------------------------
-
--- ----------------------------
--- Table structure for t_role_group
--- ----------------------------
-DROP TABLE IF EXISTS `t_role_group`;
-CREATE TABLE `t_role_group` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `role_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `RGR` (`group_id`),
-  KEY `RGG` (`role_id`),
-  CONSTRAINT `RGG` FOREIGN KEY (`role_id`) REFERENCES `t_role` (`id`),
-  CONSTRAINT `RGR` FOREIGN KEY (`group_id`) REFERENCES `t_goods` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_role_group
--- ----------------------------
-
--- ----------------------------
--- Table structure for t_role_privilege
--- ----------------------------
-DROP TABLE IF EXISTS `t_role_privilege`;
-CREATE TABLE `t_role_privilege` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `role_id` int(11) NOT NULL,
-  `privilege_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `RPR` (`role_id`),
-  KEY `RPP` (`privilege_id`),
-  CONSTRAINT `RPP` FOREIGN KEY (`privilege_id`) REFERENCES `t_privilege` (`id`),
-  CONSTRAINT `RPR` FOREIGN KEY (`role_id`) REFERENCES `t_role` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_role_privilege
--- ----------------------------
+INSERT INTO `t_role` VALUES ('1', '门卫', '0', '0', '0', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `t_role` VALUES ('2', '门卫2', '0', '0', '0', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `t_role` VALUES ('3', '门卫3', '1', '1', '1', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `t_role` VALUES ('4', '门卫4', '1', '0', '0', '1', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `t_role` VALUES ('5', '门卫5', '0', '1', '1', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `t_role` VALUES ('6', '门卫6', '0', '0', '1', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `t_role` VALUES ('7', '门外7', '1', '1', '1', '1', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for t_vehicle
@@ -294,24 +229,3 @@ CREATE TABLE `t_vehicle` (
 INSERT INTO `t_vehicle` VALUES ('1', '粤A13145', 'ALSDK265SFSD15456', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_vehicle` VALUES ('2', '粤A23146', 'DFLS4K26152345456', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_vehicle` VALUES ('3', '粤A83166', 'YERDK265SFSD15456', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-
--- ----------------------------
--- Table structure for t_vehicle_goods
--- ----------------------------
-DROP TABLE IF EXISTS `t_vehicle_goods`;
-CREATE TABLE `t_vehicle_goods` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `vehicle_id` int(11) NOT NULL,
-  `goods_id` int(11) NOT NULL,
-  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`),
-  KEY `VG_ID` (`vehicle_id`),
-  KEY `GG_ID` (`goods_id`),
-  CONSTRAINT `GG_ID` FOREIGN KEY (`goods_id`) REFERENCES `t_goods` (`id`),
-  CONSTRAINT `VG_ID` FOREIGN KEY (`vehicle_id`) REFERENCES `t_vehicle` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_vehicle_goods
--- ----------------------------

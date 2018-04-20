@@ -36,6 +36,7 @@
 </div>
 <script src="/Public/layui/layui.js"></script>
 <script src="/Public/jquery-3.3.1.min.js"></script>
+<script src="/Public/jquery.cookie.js"></script>
 <script src="/Application/Home/Public/js/index.js"></script>
 </body>
 </html>

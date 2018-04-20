@@ -25,6 +25,11 @@ class OrderController extends BaseController {
         return $nowTime.$sixRand;
     }
 
+    public function goodsNumber() {
+        $nowTime = date("Ymdhis");
+        return "goods".$nowTime;
+    }
+
     public function makeOrder() {
         $m = D("Order");
         $res = $m->makeOrder();

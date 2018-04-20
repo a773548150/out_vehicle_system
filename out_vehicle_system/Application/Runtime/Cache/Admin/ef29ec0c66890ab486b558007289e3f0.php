@@ -13,13 +13,11 @@
             <a href="/Admin/Index/index">主页</a>
         </li>
 
-        <li class="layui-nav-item">
-            <a href="/Admin/Index/toOrder">新添订单</a>
-        </li>
         <li class="layui-nav-item" >
             <a href="javascript:;">订单管理</a>
             <dl class="layui-nav-child">
                 <dd><a href="/Admin/Index/toOrderManager">订单管理</a></dd>
+                <dd><a href="/Admin/Index/toOrder">新添订单</a></dd>
             </dl>
         </li>
         <li class="layui-nav-item">
@@ -31,13 +29,13 @@
         <li class="layui-nav-item">
             <a href="javascript:;">车辆信息</a>
             <dl class="layui-nav-child">
-
+                <dd><a href="/Admin/Index/toVehicle">车辆管理</a></dd>
             </dl>
         </li>
         <li class="layui-nav-item">
             <a href="javascript:;">角色权限</a>
             <dl class="layui-nav-child">
-
+                <dd><a href="/Admin/Index/toRole">权限管理</a></dd>
             </dl>
         </li>
         <li class="layui-nav-item">
@@ -48,9 +46,11 @@
         </li>
     </ul>
     <h2>欢迎使用后台管理</h2>
-    <a href="Admin/Index/toAlertPassword" class="layui-btn" id="alert-password">修改密码</a>
+    <a href="/Admin/Index/toAlertPassword" class="layui-btn" id="alert-password">修改密码</a>
+    <a href="#" class="layui-btn" id="loginOff">退出登录</a>
     <script src="/Public/layui/layui.all.js"></script>
     <script src="/Public/jquery-3.3.1.min.js"></script>
+    <script src="/Public/jquery.cookie.js"></script>
     <script src="/Application/Admin/Public/js/index.js"></script>
 </body>
 </html>

@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/layui/css/layui.css">
-    <link rel="stylesheet" type="text/css" href="__ROOT__/Application/Admin/Public/css/alertPassword.css">
+    <link rel="stylesheet" type="text/css" href="/Public/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="/Application/Admin/Public/css/alertPassword.css">
     <title>修改密码</title>
 </head>
 <body>
@@ -12,9 +12,9 @@
 <h1>修改密码</h1>
 <form class="layui-form" action="alertPassword" method="post">
     <div class="layui-form-item">
-        <label class="layui-form-label">用户名</label>
+        <label class="layui-form-label">手机号</label>
         <div class="layui-input-inline">
-            <input type="text" name="username" required lay-verify="required" value="admin" disabled autocomplete="off" class="layui-input">
+            <input type="text" name="mobile_number" id="mobile_number" required lay-verify="required" disabled autocomplete="off" class="layui-input">
         </div>
         <!--<div class="layui-form-mid layui-word-aux">辅助文字</div>-->
     </div>
@@ -53,8 +53,9 @@
     </div>
 </form>
 
-<script src="__PUBLIC__/layui/layui.all.js"></script>
-<script src="__PUBLIC__/jquery-3.3.1.min.js"></script>
-<script src="__ROOT__/Application/Admin/Public/js/alertPassword.js"></script>
+<script src="/Public/layui/layui.all.js"></script>
+<script src="/Public/jquery-3.3.1.min.js"></script>
+<script src="/Public/jquery.cookie.js"></script>
+<script src="/Application/Home/Public/js/alertPassword.js"></script>
 </body>
 </html>

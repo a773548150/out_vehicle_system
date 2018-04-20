@@ -13,13 +13,11 @@
         <a href="/Admin/Index/index">主页</a>
     </li>
 
-    <li class="layui-nav-item layui-this">
-        <a href="/Admin/Index/toOrder">新添订单</a>
-    </li>
-    <li class="layui-nav-item" >
+    <li class="layui-nav-item layui-nav-itemed" >
         <a href="javascript:;">订单管理</a>
         <dl class="layui-nav-child">
             <dd><a href="/Admin/Index/toOrderManager">订单管理</a></dd>
+            <dd><a href="/Admin/Index/toOrder" class="layui-this">新添订单</a></dd>
         </dl>
     </li>
     <li class="layui-nav-item">
@@ -31,13 +29,14 @@
     <li class="layui-nav-item">
         <a href="javascript:;">车辆信息</a>
         <dl class="layui-nav-child">
-
+            <dd><a href="/Admin/Index/toVehicle">车辆管理</a></dd>
         </dl>
     </li>
     <li class="layui-nav-item">
         <a href="javascript:;">角色权限</a>
         <dl class="layui-nav-child">
-
+            <dd><a href="/Admin/Index/toRole">权限管理</a></dd>
+            <dd><a href="/Admin/Index/toUser">后台用户管理</a></dd>
         </dl>
     </li>
     <li class="layui-nav-item">
@@ -72,7 +71,7 @@
                     <?php if(is_array($goodsName)): foreach($goodsName as $key=>$vo): ?><option value="<?php echo ($key); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; ?>
                 </select>
             </div>
-            <button class="layui-btn" id="addGoods">添加</button>
+            <!--<button class="layui-btn" id="addGoods">添加</button>-->
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">数量</label>

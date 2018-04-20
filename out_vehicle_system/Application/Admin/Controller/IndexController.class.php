@@ -18,28 +18,35 @@ class IndexController extends BaseController {
         }
     }
 
-    public function toMain() {
-        $this->display("/main");
-    }
-
     public function login() {
+        $username = I('post.username');
         $m = D("Manager");
         $rs = $m->login();
         if ($rs == 1) {
-            $username = I('post.username');
             setcookie("username", $username, time() + 3600*24*7,"/");
             $this->ajaxReturn("登录成功");
-            $this->display("/login");
         } else {
             $this->ajaxReturn("登录失败");
-            $this->display("/login");
         }
+    }
+
+    public function loginOff() {
+        setcookie("username", "");
+        $this->ajaxReturn("成功退出");
     }
 
     public function signUp() {
         $m = D("Manager");
         $rs = $m->signUp();
         echo $rs;
+    }
+
+    public function isLogin() {
+        if ($_COOKIE["username"]) {
+            $this->ajaxReturn("已经登录");
+        } else {
+            $this->ajaxReturn("未登录");
+        }
     }
 
     public function toLogin() {
@@ -67,9 +74,6 @@ class IndexController extends BaseController {
     }
 
     public function toOrderManager() {
-//        $type = A('Order');
-//        $type->searchType();
-      //  $type->searchOrder();
         $this->display("/orderManager");
     }
 
@@ -79,5 +83,20 @@ class IndexController extends BaseController {
 
     public function toVehicle() {
         $this->display("/vehicle");
+    }
+
+    public function toRole() {
+        $Role = A("Role");
+        $Role->role();
+        $Role->user();
+        $this->display("/role");
+    }
+
+    public function toGoods() {
+        $this->display("/goods");
+    }
+
+    public function toUser() {
+        $this->display("/addUser");
     }
 }

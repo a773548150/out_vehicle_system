@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/layui/css/layui.css">
-    <link rel="stylesheet" type="text/css" href="__ROOT__/Application/Admin/Public/css/alertPassword.css">
+    <link rel="stylesheet" type="text/css" href="/Public/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="/Application/Admin/Public/css/alertPassword.css">
     <title>修改密码</title>
 </head>
 <body>
@@ -53,8 +53,8 @@
     </div>
 </form>
 
-<script src="__PUBLIC__/layui/layui.all.js"></script>
-<script src="__PUBLIC__/jquery-3.3.1.min.js"></script>
-<script src="__ROOT__/Application/Admin/Public/js/alertPassword.js"></script>
+<script src="/Public/layui/layui.all.js"></script>
+<script src="/Public/jquery-3.3.1.min.js"></script>
+<script src="/Application/Admin/Public/js/alertPassword.js"></script>
 </body>
 </html>

@@ -34,7 +34,7 @@ class ManagerModel extends BaseModel {
         $data['password'] = md5(I('post.oldPassword'));
         $result = $m->where($data)->getField('id');
 
-        if ($result === "1") {
+        if ($result) {
             $data2['password'] = md5(I('post.newPassword'));
             $result2 = $m->where(array('id'=>$result))->save($data2);
             if ($result2 === 1) {

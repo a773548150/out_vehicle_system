@@ -13,9 +13,18 @@
     <li class="layui-nav-item layui-this"><a href="">公共订单</a></li>
     <li class="layui-nav-item "><a href="">个人订单</a></li>
     <li class="layui-nav-item"><a href="">个人中心</a></li>
+    <li class="layui-nav-item">
+        <a href=""><img src="http://t.cn/RCzsdCq" class="layui-nav-img">我</a>
+        <dl class="layui-nav-child">
+            <dd><a href="/Home/Index/toAlertPassword">修改密码</a></dd>
+            <dd><a href="javascript:;">安全管理</a></dd>
+            <dd><a href="/Home/Index/loginOff" id="loginOff">退出</a></dd>
+        </dl>
+    </li>
 </ul>
 <script src="/Public/jquery-3.3.1.min.js"></script>
 <script src="/Public/layui/layui.js"></script>
+<script src="/Public/jquery.cookie.js"></script>
 <script src="/Application/Home/Public/js/publicOrder.js"></script>
 </body>
 </html>

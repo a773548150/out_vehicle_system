@@ -20,21 +20,13 @@ class DriverModel extends BaseModel {
         return $result;
     }
 
-    public function signUp() {
-        $m = M("manager");
-        $up['username'] = I('post.username');
-        $up['password'] = md5(I('post.password'));
-        $result = $m->data($up)->add();
-        return $result;
-    }
-
     public function alertPassword() {
-        $m = M("manager");
-        $data['username'] = I('post.username');
+        $m = M("driver");
+        $data['mobile_number'] = I('post.mobile_number');
         $data['password'] = md5(I('post.oldPassword'));
         $result = $m->where($data)->getField('id');
 
-        if ($result === "1") {
+        if ($result) {
             $data2['password'] = md5(I('post.newPassword'));
             $result2 = $m->where(array('id'=>$result))->save($data2);
             if ($result2 === 1) {

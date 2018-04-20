@@ -1,4 +1,5 @@
 $(window).ready(function (){
+    $("#mobile_number").val($.cookie("username"));
     layui.use('form', function(){
         var form = layui.form;
 
@@ -12,11 +13,11 @@ $(window).ready(function (){
                     dataType: 'json',
                     data: datas,
                     success: function (data, status) {
-                        if (data == 1) {
-                            $.cookie("username", "");
+                        if (data==1) {
                             alert("修改密码成功");
-                            window.location = "/Admin/Index/toLogin";
-                        } else if (data == 2) {
+                            $.cookie("username", "");
+                            window.location = "/Home/Index/index";
+                        } else if (data==2) {
                             alert("密码错误");
                         }
                     },
@@ -27,9 +28,9 @@ $(window).ready(function (){
             } else {
                 alert("密码不一致");
             }
+
             return false;
         });
-
     });
 
 //     $(".inputNewPsswordHide").hide();

@@ -12,7 +12,13 @@ $(window).ready(function(){
                 dataType: 'json',
                 data: datas,
                 success: function (data, status) {
-                    alert(data);
+                    if (data == "登录成功") {
+                        alert(data);
+                        window.location = "/Admin/Index/index";
+                    } else if (data == "登录失败") {
+                        alert("密码或账号错误");
+                    }
+
                 },
                 fail: function (err, status) {
                     console.log(err)

@@ -102,10 +102,11 @@ $(window).ready(function() {
                 ,{field: 'out_number', title: '出车车牌号', width:120, sort: true, edit: "text"}
                 ,{field: 'out_destination', title: '目的地', width: 177, edit: "text"}
                 ,{field: 'mission_status', title: '状态', width: 80, sort: true, edit: "text"}
-                ,{field: 'order_driver_number', title: '司机编号', width: 80, sort: true, edit: "text"}
-                ,{field: 'pick_up_order', title: '提货单号', width: 80, edit: "text"}
+                ,{field: 'order_driver_number', title: '司机编号', width: 200, sort: true, edit: "text"}
+                ,{field: 'pick_up_order', title: '提货单号', width: 120, edit: "text"}
                 ,{field: 'contract_number', title: '合同号', width: 120, sort: true, edit: "text"}
                 ,{field: 'out_of_stock_message', title: '缺货信息', width: 120, sort: true, edit: "text"}
+                ,{field: 'goods_name', title: '商品名', width: 120, sort: true, edit: "text"}
                 ,{field: 'pick_up_quantity', title: '提货数量', width: 120, sort: true, edit: "text"}
                 ,{field: 'pick_up_time', title: '提货时间', width: 120, sort: true, edit: "text"}
                 ,{field: 'closing_unit', title: '结算单位', width: 120, sort: true, edit: "text"}
