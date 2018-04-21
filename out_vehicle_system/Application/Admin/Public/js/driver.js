@@ -51,6 +51,7 @@ $(window).ready(function() {
         table.render({
             elem: '#order'
             ,height: 515
+            ,width: 980
             ,limit: 11
             ,url: '/Admin/Driver/searchDriver' //数据接口
             ,page: true //开启分页
@@ -81,6 +82,7 @@ $(window).ready(function() {
                         dataType: 'json',
                         data: data,
                         success: function (data, status) {
+                            alert("删除成功");
                             console.log(data);
                         },
                         fail: function (err, status) {
@@ -104,6 +106,7 @@ $(window).ready(function() {
                                 "id"    : editData.data.id
                             },
                             success: function (data, status) {
+                                alert("修改成功");
                                 console.log(data);
                             },
                             fail: function (err, status) {

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-04-20 23:37:16
+Date: 2018-04-21 11:46:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,7 +39,7 @@ CREATE TABLE `t_driver` (
 -- ----------------------------
 -- Records of t_driver
 -- ----------------------------
-INSERT INTO `t_driver` VALUES ('1', '20180419075911247106', '林夏聪', '13794578316', '202cb962ac59075b964b07152d234b70', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
+INSERT INTO `t_driver` VALUES ('1', '20180419075911247106', '林夏聪', '13794578316', '202cb962ac59075b964b07152d234b70', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
 INSERT INTO `t_driver` VALUES ('2', '20180419075938104971', '林聪', '13794578311', '202cb962ac59075b964b07152d234b70', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
 
 -- ----------------------------
@@ -109,21 +109,22 @@ CREATE TABLE `t_manager` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
   `username` varchar(20) NOT NULL COMMENT '管理员账号',
   `password` varchar(32) NOT NULL COMMENT '管理员密码',
-  `role_id` int(11) NOT NULL,
+  `role_id` int(11) DEFAULT NULL,
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改记录时插入当前时间',
   `session_id` varchar(26) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `User_uq` (`username`),
-  CONSTRAINT `df_DF` FOREIGN KEY (`id`) REFERENCES `t_role` (`id`)
+  KEY `RM_FID` (`role_id`) USING BTREE,
+  CONSTRAINT `RM_FID` FOREIGN KEY (`id`) REFERENCES `t_role` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_manager
 -- ----------------------------
 INSERT INTO `t_manager` VALUES ('1', 'admin', '202cb962ac59075b964b07152d234b70', '7', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
-INSERT INTO `t_manager` VALUES ('2', '123', '250cf8b51c773f3f8dc8b4be867a9a02', '2', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
-INSERT INTO `t_manager` VALUES ('3', 'xiaoming', '202cb962ac59075b964b07152d234b70', '2', '2018-04-20 10:28:19', '0000-00-00 00:00:00', '0');
+INSERT INTO `t_manager` VALUES ('2', '123', '250cf8b51c773f3f8dc8b4be867a9a02', '7', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
+INSERT INTO `t_manager` VALUES ('3', 'xiaoming', '202cb962ac59075b964b07152d234b70', '4', '2018-04-20 10:28:19', '2018-04-21 09:11:10', '0');
 
 -- ----------------------------
 -- Table structure for t_order
@@ -163,7 +164,7 @@ CREATE TABLE `t_order` (
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('1', '20180417053212585842', '', '0000-00-00 00:00:00', '2018-04-17 17:32:00', '地方上的12', '0', null, '1', null, null, null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('1', '20180417053212585842', '', '0000-00-00 00:00:00', '2018-04-17 17:32:00', '地方上的12', '0', null, '1', null, null, null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
 INSERT INTO `t_order` VALUES ('4', '20180417055352254083', '', '2018-04-17 05:54:01', '2018-04-17 17:53:00', '水电费12', '2', null, '1', '2', '1', null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_order` VALUES ('5', '20180417055653975555', '', '2018-04-17 05:57:02', '2018-04-17 17:56:00', '12', '1', null, '1', '3', '2', null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_order` VALUES ('7', '20180417060041974813', '', '2018-04-17 06:00:50', '2018-04-17 18:00:00', '的12', '0', null, '2', null, null, null, null, null, null, '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
@@ -190,6 +191,7 @@ CREATE TABLE `t_role` (
   `manage_vehicle` tinyint(4) NOT NULL DEFAULT '1',
   `manage_role` tinyint(4) NOT NULL DEFAULT '1',
   `manage_diary` tinyint(4) NOT NULL DEFAULT '1',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `create_time` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -199,13 +201,13 @@ CREATE TABLE `t_role` (
 -- ----------------------------
 -- Records of t_role
 -- ----------------------------
-INSERT INTO `t_role` VALUES ('1', '门卫', '0', '0', '0', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `t_role` VALUES ('2', '门卫2', '0', '0', '0', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `t_role` VALUES ('3', '门卫3', '1', '1', '1', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `t_role` VALUES ('4', '门卫4', '1', '0', '0', '1', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `t_role` VALUES ('5', '门卫5', '0', '1', '1', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `t_role` VALUES ('6', '门卫6', '0', '0', '1', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `t_role` VALUES ('7', '门外7', '1', '1', '1', '1', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `t_role` VALUES ('1', '门卫', '0', '0', '1', '0', '0', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `t_role` VALUES ('2', '门卫2', '0', '0', '0', '0', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `t_role` VALUES ('3', '门卫3', '1', '1', '1', '0', '0', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `t_role` VALUES ('4', '门卫4', '1', '0', '0', '1', '1', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `t_role` VALUES ('5', '门卫5', '0', '1', '1', '0', '0', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `t_role` VALUES ('6', '门卫6', '0', '0', '1', '1', '0', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `t_role` VALUES ('7', '门外7', '1', '1', '1', '1', '1', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for t_vehicle

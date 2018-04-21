@@ -24,6 +24,7 @@ class DriverModel extends BaseModel {
     public function searchDriver() {
         $m = M("driver");
         $data['name'] = array('LIKE', "%".I('get.name')."%");
+        $data['status'] = 1;
         $page = I('get.page');
         $limit = I('get.limit');
         $result = $m->where($data)->order('id desc')->page($page, $limit)->select();
@@ -32,8 +33,10 @@ class DriverModel extends BaseModel {
 
     public function deleteDriver() {
         $m = M("driver");
-        $m->delete(I('post.id'));
-        echo "1";
+        $data["id"] = I("post.id");
+        $data2["status"] = 0;
+        $result = $m->where($data)->save($data2);
+        echo $result;
     }
 
     public function editDriver() {

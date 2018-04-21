@@ -76,4 +76,11 @@ class RoleController extends BaseController {
         $rs = json(0,'数据返回成功',1000,$res);
         echo $rs;
     }
+
+    public function findPermissions() {
+        $m = D("Role");
+        $res = $m->findPermissions();
+        //$rs = json(0,'数据返回成功',1000,$res);
+        $this->assign('permissions', $res);
+    }
 }

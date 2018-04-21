@@ -13,39 +13,38 @@
     <li class="layui-nav-item">
         <a href="/Admin/Index/index">主页</a>
     </li>
+    <?php if(in_array(($permissions[0][manage_order]), explode(',',"1"))): ?><li class="layui-nav-item" >
+            <a href="javascript:;">订单管理</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/Admin/Index/toOrderManager">订单管理</a></dd>
+                <dd><a href="/Admin/Index/toOrder">新添订单</a></dd>
+            </dl>
+        </li><?php endif; ?>
+    <?php if(in_array(($permissions[0][manage_driver]), explode(',',"1"))): ?><li class="layui-nav-item">
+            <a href="javascript:;">司机信息</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/Admin/Index/toDriver">司机管理</a></dd>
+            </dl>
+        </li><?php endif; ?>
+    <?php if(in_array(($permissions[0][manage_vehicle]), explode(',',"1"))): ?><li class="layui-nav-item">
+            <a href="javascript:;">车辆信息</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/Admin/Index/toVehicle">车辆管理</a></dd>
+            </dl>
+        </li><?php endif; ?>
+    <?php if(in_array(($permissions[0][manage_role]), explode(',',"1"))): ?><li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;">角色权限</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/Admin/Index/toRole"  class="layui-this">权限管理</a></dd>
+                <dd><a href="/Admin/Index/toUser">后台用户管理</a></dd>
+            </dl>
+        </li><?php endif; ?>
+    <?php if(in_array(($permissions[0][manage_diary]), explode(',',"1"))): ?><li class="layui-nav-item">
+            <a href="javascript:;">操作日记</a>
+            <dl class="layui-nav-child">
 
-    <li class="layui-nav-item" >
-        <a href="javascript:;">订单管理</a>
-        <dl class="layui-nav-child">
-            <dd><a href="/Admin/Index/toOrderManager">订单管理</a></dd>
-            <dd><a href="/Admin/Index/toOrder">新添订单</a></dd>
-        </dl>
-    </li>
-    <li class="layui-nav-item">
-        <a href="javascript:;">司机信息</a>
-        <dl class="layui-nav-child">
-            <dd><a href="/Admin/Index/toDriver">司机管理</a></dd>
-        </dl>
-    </li>
-    <li class="layui-nav-item">
-        <a href="javascript:;">车辆信息</a>
-        <dl class="layui-nav-child">
-            <dd><a href="/Admin/Index/toVehicle">车辆管理</a></dd>
-        </dl>
-    </li>
-    <li class="layui-nav-item layui-nav-itemed">
-        <a href="javascript:;">角色权限</a>
-        <dl class="layui-nav-child">
-            <dd><a href="/Admin/Index/toRole"  class="layui-this">权限管理</a></dd>
-            <dd><a href="/Admin/Index/toUser">后台用户管理</a></dd>
-        </dl>
-    </li>
-    <li class="layui-nav-item">
-        <a href="javascript:;">操作日记</a>
-        <dl class="layui-nav-child">
-
-        </dl>
-    </li>
+            </dl>
+        </li><?php endif; ?>
 </ul>
 
 <div class="allContent">
@@ -80,7 +79,7 @@
             <label class="layui-form-label">用户</label>
 
             <div class="layui-input-inline">
-                <select name="user" lay-verify="required">
+                <select name="user" lay-verify="required" id="usernameSelect">
                     <option value="">点击选择用户</option>
                     <?php if(is_array($userName)): foreach($userName as $key=>$vo): ?><option value="<?php echo ($key); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; ?>
                 </select>
@@ -90,7 +89,7 @@
             <label class="layui-form-label">角色</label>
 
             <div class="layui-input-inline">
-                <select name="role" lay-verify="required">
+                <select name="role" lay-verify="required" id="roleNameSelect">
                     <option value="">点击选择角色</option>
                     <?php if(is_array($roleName)): foreach($roleName as $key=>$vo): ?><option value="<?php echo ($key); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; ?>
                 </select>
@@ -104,9 +103,7 @@
         </div>
     </form>
     <table id="permissions" lay-filter="permissions"></table>
-    <script type="text/html" id="barPermissions">
-        <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
-    </script>
+
 </div>
 
 <script src="/Public/layui/layui.js"></script>

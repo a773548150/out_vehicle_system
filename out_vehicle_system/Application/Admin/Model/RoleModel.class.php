@@ -35,15 +35,18 @@ class RoleModel extends BaseModel {
     public function searchRole() {
         $m = M("Role");
         $page = I('get.page');
+        $data['status'] = 1;
         $limit = I('get.limit');
-        $result = $m->order('id desc')->page($page, $limit)->select();
+        $result = $m->where($data)->order('id desc')->page($page, $limit)->select();
         return $result;
     }
 
     public function deleteRole() {
         $m = M("Role");
-        $m->delete(I('post.id'));
-        echo "1";
+        $data["id"] = I("post.id");
+        $data2["status"] = 0;
+        $result = $m->where($data)->save($data2);
+        echo $result;
     }
 
     public function editRole() {
@@ -98,13 +101,24 @@ class RoleModel extends BaseModel {
         }
         return $result;
     }
-//????
+
     public function addPermissions() {
         $m = M("manager");
+        $R = M("role");
         $data['username'] = trim(I('post.username'));
-        $data['password'] = md5(trim(I('post.password')));
-        $data['create_time'] = date("Y-m-d h:i:s");
-        $result = $m->data($data)->add();
+        $roleName = trim(I('post.roleName'));
+        $data2['role_id'] = $R->where(array("name" => $roleName))->getField("id");
+        $data2['update_time'] = date("Y-m-d h:i:s");
+        $result = $m->where($data)->save($data2);
         return $result;
+    }
+
+    public function findPermissions() {
+        $m = M("manager");
+        $R = M("role");
+        $data["username"] = $_COOKIE["username"];
+        $result["id"] = $m->where($data)->getField("role_id");
+        $result2 = $R->where($result)->select();
+        return $result2;
     }
 }

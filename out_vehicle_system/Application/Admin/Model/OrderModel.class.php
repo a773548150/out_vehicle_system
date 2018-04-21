@@ -84,6 +84,7 @@ class OrderModel extends BaseModel {
 
         $data['mission_status'] = I('get.missionStatus');
         $data['number'] = array('LIKE', "%".I('get.orderNumber')."%");
+        $data['status'] = 1;
         $page = I('get.page');
         $limit = I('get.limit');
         if ($data['mission_status'] === "0" || $data['mission_status'] === "1" || $data['mission_status'] === "2") {
@@ -96,7 +97,7 @@ class OrderModel extends BaseModel {
             $result = $this->findForeign($result);
             return $result;
         } else {
-            $result = $m->page($page, $limit)->select();
+            $result = $m->where(array("status"=>1))->page($page, $limit)->select();
             $result = $this->findForeign($result);
             return $result;
         }
@@ -104,8 +105,10 @@ class OrderModel extends BaseModel {
 
     public function deleteOrder() {
         $m = M("order");
-        $m->delete(I('post.id'));
-        echo "1";
+        $data["id"] = I("post.id");
+        $data2["status"] = 0;
+        $result = $m->where($data)->save($data2);
+        echo $result;
     }
 
     public function editOrder() {

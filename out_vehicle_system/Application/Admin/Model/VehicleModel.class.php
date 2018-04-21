@@ -21,6 +21,7 @@ class VehicleModel extends BaseModel {
     public function searchVehicle() {
         $m = M("Vehicle");
         $data['license_plate'] = array('LIKE', "%".I('get.license_plate')."%");
+        $data['status'] = 1;
         $page = I('get.page');
         $limit = I('get.limit');
         $result = $m->where($data)->order('id desc')->page($page, $limit)->select();
@@ -29,8 +30,10 @@ class VehicleModel extends BaseModel {
 
     public function deleteVehicle() {
         $m = M("Vehicle");
-        $m->delete(I('post.id'));
-        echo "1";
+        $data["id"] = I("post.id");
+        $data2["status"] = 0;
+        $result = $m->where($data)->save($data2);
+        echo $result;
     }
 
     public function editVehicle() {

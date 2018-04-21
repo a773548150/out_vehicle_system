@@ -12,9 +12,11 @@ class IndexController extends BaseController {
 
     public function index() {
         if ($_COOKIE['username']) {
-            $this->display("/success");
-        } else {
+            $permissions = A("Role");
+            $permissions->findPermissions();
             $this->display("/index");
+        } else {
+            $this->display("/login");
         }
     }
 
@@ -23,7 +25,8 @@ class IndexController extends BaseController {
         $m = D("Manager");
         $rs = $m->login();
         if ($rs == 1) {
-            setcookie("username", $username, time() + 3600*24*7,"/");
+            setcookie("username", "");
+            setcookie("username", $username,time()+3600*2);
             $this->ajaxReturn("登录成功");
         } else {
             $this->ajaxReturn("登录失败");
@@ -70,18 +73,26 @@ class IndexController extends BaseController {
     public function toOrder() {
         $goods = A("Order");
         $goods->goods();
+        $permissions = A("Role");
+        $permissions->findPermissions();
         $this->display("/order");
     }
 
     public function toOrderManager() {
+        $permissions = A("Role");
+        $permissions->findPermissions();
         $this->display("/orderManager");
     }
 
     public function toDriver() {
+        $permissions = A("Role");
+        $permissions->findPermissions();
         $this->display("/driver");
     }
 
     public function toVehicle() {
+        $permissions = A("Role");
+        $permissions->findPermissions();
         $this->display("/vehicle");
     }
 
@@ -89,6 +100,8 @@ class IndexController extends BaseController {
         $Role = A("Role");
         $Role->role();
         $Role->user();
+        $permissions = A("Role");
+        $permissions->findPermissions();
         $this->display("/role");
     }
 
@@ -97,6 +110,8 @@ class IndexController extends BaseController {
     }
 
     public function toUser() {
+        $permissions = A("Role");
+        $permissions->findPermissions();
         $this->display("/addUser");
     }
 }

@@ -13,39 +13,48 @@
     <li class="layui-nav-item">
         <a href="/Admin/Index/index">主页</a>
     </li>
+    <in name="permissions[0][manage_order]" value="1">
+        <li class="layui-nav-item" >
+            <a href="javascript:;">订单管理</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/Admin/Index/toOrderManager">订单管理</a></dd>
+                <dd><a href="/Admin/Index/toOrder">新添订单</a></dd>
+            </dl>
+        </li>
+    </in>
+    <in name="permissions[0][manage_driver]" value="1">
+        <li class="layui-nav-item">
+            <a href="javascript:;">司机信息</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/Admin/Index/toDriver">司机管理</a></dd>
+            </dl>
+        </li>
+    </in>
+    <in name="permissions[0][manage_vehicle]" value="1">
+        <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;">车辆信息</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/Admin/Index/toVehicle" class="layui-this">车辆管理</a></dd>
+            </dl>
+        </li>
+    </in>
+    <in name="permissions[0][manage_role]" value="1">
+        <li class="layui-nav-item">
+            <a href="javascript:;">角色权限</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/Admin/Index/toRole">权限管理</a></dd>
+                <dd><a href="/Admin/Index/toUser">后台用户管理</a></dd>
+            </dl>
+        </li>
+    </in>
+    <in name="permissions[0][manage_diary]" value="1">
+        <li class="layui-nav-item">
+            <a href="javascript:;">操作日记</a>
+            <dl class="layui-nav-child">
 
-    <li class="layui-nav-item" >
-        <a href="javascript:;">订单管理</a>
-        <dl class="layui-nav-child">
-            <dd><a href="/Admin/Index/toOrderManager">订单管理</a></dd>
-            <dd><a href="/Admin/Index/toOrder">新添订单</a></dd>
-        </dl>
-    </li>
-    <li class="layui-nav-item">
-        <a href="javascript:;">司机信息</a>
-        <dl class="layui-nav-child">
-            <dd><a href="/Admin/Index/toDriver">司机管理</a></dd>
-        </dl>
-    </li>
-    <li class="layui-nav-item layui-nav-itemed">
-        <a href="javascript:;">车辆信息</a>
-        <dl class="layui-nav-child">
-            <dd><a href="/Admin/Index/toVehicle" class="layui-this">车辆管理</a></dd>
-        </dl>
-    </li>
-    <li class="layui-nav-item">
-        <a href="javascript:;">角色权限</a>
-        <dl class="layui-nav-child">
-            <dd><a href="/Admin/Index/toRole">权限管理</a></dd>
-            <dd><a href="/Admin/Index/toUser">后台用户管理</a></dd>
-        </dl>
-    </li>
-    <li class="layui-nav-item">
-        <a href="javascript:;">操作日记</a>
-        <dl class="layui-nav-child">
-
-        </dl>
-    </li>
+            </dl>
+        </li>
+    </in>
 </ul>
 
 <div class="allContent">

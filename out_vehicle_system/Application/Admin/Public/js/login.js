@@ -18,7 +18,6 @@ $(window).ready(function(){
                     } else if (data == "登录失败") {
                         alert("密码或账号错误");
                     }
-
                 },
                 fail: function (err, status) {
                     console.log(err)
