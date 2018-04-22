@@ -88,16 +88,16 @@ class OrderModel extends BaseModel {
         $page = I('get.page');
         $limit = I('get.limit');
         if ($data['mission_status'] === "0" || $data['mission_status'] === "1" || $data['mission_status'] === "2") {
-            $result = $m->where($data)->page($page, $limit)->select();
+            $result = $m->where($data)->order('id desc')->page($page, $limit)->select();
             $result = $this->findForeign($result);
             return $result;
         } else if($data['mission_status'] === "3"){
             unset($data['mission_status']);
-            $result = $m->where($data)->page($page, $limit)->select();
+            $result = $m->where($data)->order('id desc')->page($page, $limit)->select();
             $result = $this->findForeign($result);
             return $result;
         } else {
-            $result = $m->where(array("status"=>1))->page($page, $limit)->select();
+            $result = $m->where(array("status"=>1))->order('id desc')->page($page, $limit)->select();
             $result = $this->findForeign($result);
             return $result;
         }
@@ -118,6 +118,18 @@ class OrderModel extends BaseModel {
         $lim["id"] = I('post.id');
         $data[$field] = $value;
         $res = $m->where($lim)->save($data);
+        return $res;
+    }
+
+    public function timeSelect() {
+        $m = M("order");
+        $startTime = I("get.startTime");
+        $endTime = I("get.endTime");
+        $page = I('get.page');
+        $limit = I('get.limit');
+        $data["start_time"] = array(array('gt', $startTime), array('lt', $endTime));
+        $res = $m->where($data)->order('id desc')->page($page, $limit)->select();
+        $res = $this->findForeign($res);
         return $res;
     }
 }

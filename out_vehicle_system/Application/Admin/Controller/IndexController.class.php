@@ -11,44 +11,45 @@ namespace Admin\Controller;
 class IndexController extends BaseController {
 
     public function index() {
-        if ($_COOKIE['username']) {
+        if($this->isLogin()){
             $permissions = A("Role");
             $permissions->findPermissions();
             $this->display("/index");
-        } else {
-            $this->display("/login");
         }
     }
 
     public function login() {
+        session_start();
         $username = I('post.username');
         $m = D("Manager");
         $rs = $m->login();
         if ($rs == 1) {
-            setcookie("username", "");
-            setcookie("username", $username,time()+3600*2);
+            $_SESSION['logined'] = true;
+            $_SESSION['username'] = $username;
             $this->ajaxReturn("登录成功");
         } else {
+            $_SESSION['logined'] = false;
             $this->ajaxReturn("登录失败");
         }
     }
 
     public function loginOff() {
-        setcookie("username", "");
+        session_destroy();
         $this->ajaxReturn("成功退出");
     }
 
-    public function signUp() {
-        $m = D("Manager");
-        $rs = $m->signUp();
-        echo $rs;
-    }
+//    public function signUp() {
+//        $m = D("Manager");
+//        $rs = $m->signUp();
+//        echo $rs;
+//    }
 
     public function isLogin() {
-        if ($_COOKIE["username"]) {
-            $this->ajaxReturn("已经登录");
+        if (isset($_SESSION['logined']) && $_SESSION['logined']) {
+            return true;
         } else {
-            $this->ajaxReturn("未登录");
+            $this->toLogin();
+            return false;
         }
     }
 
@@ -56,12 +57,10 @@ class IndexController extends BaseController {
         $this->display("/login");
     }
 
-    public function toSignUp() {
-        $this->display("/signUp");
-    }
-
     public function toAlertPassword() {
-        $this->display("/alertPassword");
+        if($this->isLogin()) {
+            $this->display("/alertPassword");
+        }
     }
 
     public function alertPassword() {
@@ -71,47 +70,61 @@ class IndexController extends BaseController {
     }
 
     public function toOrder() {
-        $goods = A("Order");
-        $goods->goods();
-        $permissions = A("Role");
-        $permissions->findPermissions();
-        $this->display("/order");
+        if($this->isLogin()) {
+            $goods = A("Order");
+            $goods->goods();
+            $permissions = A("Role");
+            $permissions->findPermissions();
+            $this->display("/order");
+        }
     }
 
     public function toOrderManager() {
-        $permissions = A("Role");
-        $permissions->findPermissions();
-        $this->display("/orderManager");
+        if($this->isLogin()) {
+            $permissions = A("Role");
+            $permissions->findPermissions();
+            $this->display("/orderManager");
+        }
     }
 
     public function toDriver() {
-        $permissions = A("Role");
-        $permissions->findPermissions();
-        $this->display("/driver");
+        if($this->isLogin()) {
+            $permissions = A("Role");
+            $permissions->findPermissions();
+            $this->display("/driver");
+        }
     }
 
     public function toVehicle() {
-        $permissions = A("Role");
-        $permissions->findPermissions();
-        $this->display("/vehicle");
+        if($this->isLogin()) {
+            $permissions = A("Role");
+            $permissions->findPermissions();
+            $this->display("/vehicle");
+        }
     }
 
     public function toRole() {
-        $Role = A("Role");
-        $Role->role();
-        $Role->user();
-        $permissions = A("Role");
-        $permissions->findPermissions();
-        $this->display("/role");
+        if($this->isLogin()){
+            $Role = A("Role");
+            $Role->role();
+            $Role->user();
+            $permissions = A("Role");
+            $permissions->findPermissions();
+            $this->display("/role");
+        }
     }
 
     public function toGoods() {
-        $this->display("/goods");
+        if($this->isLogin()) {
+            $this->display("/goods");
+        }
     }
 
     public function toUser() {
-        $permissions = A("Role");
-        $permissions->findPermissions();
-        $this->display("/addUser");
+        if($this->isLogin()) {
+            $permissions = A("Role");
+            $permissions->findPermissions();
+            $this->display("/addUser");
+        }
     }
 }

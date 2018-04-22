@@ -12,7 +12,6 @@ class DriverModel extends BaseModel {
     public function login() {
 //        $up['username'] = $_POST['username'];
 //        $up['password'] = $_POST['password'];
-
         $up['mobile_number'] = I('post.mobile_number');
         $up['password'] = md5(I('post.password'));
         $m = M("driver");

@@ -15,18 +15,20 @@ class ManagerModel extends BaseModel {
 
         $up['username'] = I('post.username');
         $up['password'] = md5(I('post.password'));
+        $data['session_id'] = session_id();
         $m = M("manager");
+        $m->where($up)->save($data);
         $result = $m->where($up)->count();
         return $result;
     }
 
-    public function signUp() {
-        $m = M("manager");
-        $up['username'] = I('post.username');
-        $up['password'] = md5(I('post.password'));
-        $result = $m->data($up)->add();
-        return $result;
-    }
+//    public function signUp() {
+//        $m = M("manager");
+//        $up['username'] = I('post.username');
+//        $up['password'] = md5(I('post.password'));
+//        $result = $m->data($up)->add();
+//        return $result;
+//    }
 
     public function alertPassword() {
         $m = M("manager");

@@ -42,7 +42,7 @@
     <?php if(in_array(($permissions[0][manage_diary]), explode(',',"1"))): ?><li class="layui-nav-item">
             <a href="javascript:;">操作日记</a>
             <dl class="layui-nav-child">
-    
+
             </dl>
         </li><?php endif; ?>
 </ul>

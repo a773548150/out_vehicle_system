@@ -16,7 +16,7 @@ $(window).ready(function() {
                 alert(data);
                 if (data == "成功退出") {
                     $.cookie("username");
-                    window.location = "/Home/Index/index";
+                    window.location = "/Home/Index/toLogin";
                 }
             },
             fail: function (err, status) {

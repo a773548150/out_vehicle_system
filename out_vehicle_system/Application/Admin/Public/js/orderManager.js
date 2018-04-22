@@ -85,6 +85,38 @@ $(window).ready(function() {
             // });
             return false;
         });
+
+        form.on('submit(timeSelect)', function(data){
+            var datas = data.field;
+            url = "/Admin/Order/timeSelect?" +"&startTime=" + datas.startTime + "&endTime=" + datas.endTime;
+            layui.use('table', function() {
+                var table = layui.table;
+                table.reload('order', {
+                    url: url
+                });
+            });
+            return false;
+        });
+    });
+
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#time1', //指定元素
+            format: 'yyyy-MM-dd HH:mm',
+            type: 'datetime'
+        });
+    });
+
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#time2', //指定元素
+            format: 'yyyy-MM-dd HH:mm',
+            type: 'datetime'
+        });
     });
 
     layui.use('table', function(){
@@ -98,6 +130,7 @@ $(window).ready(function() {
             ,page: true //开启分页
             ,cols: [[ //表头
                 {field: 'number', title: '订单号', width:190, sort: true, fixed: 'left'}
+                ,{field: 'udid', title: '订单编号', width:190, sort: true, fixed: 'left'}
                 ,{field: 'create_time', title: '出发时间', width:160, edit: "text"}
                 ,{field: 'out_number', title: '出车车牌号', width:120, sort: true, edit: "text"}
                 ,{field: 'out_destination', title: '目的地', width: 177, edit: "text"}
@@ -176,4 +209,9 @@ $(window).ready(function() {
 
     });
 
+    $("#excel").click(function () {
+        var startTime = $("input[name='startTime']").val();
+        var endTime = $("input[name='endTime']").val();
+        window.location = "/Admin/Order/expUser?startTime=" + startTime + "&endTime=" + endTime;
+    });
 });

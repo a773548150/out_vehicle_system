@@ -116,7 +116,7 @@ class RoleModel extends BaseModel {
     public function findPermissions() {
         $m = M("manager");
         $R = M("role");
-        $data["username"] = $_COOKIE["username"];
+        $data["username"] = $_SESSION["username"];
         $result["id"] = $m->where($data)->getField("role_id");
         $result2 = $R->where($result)->select();
         return $result2;

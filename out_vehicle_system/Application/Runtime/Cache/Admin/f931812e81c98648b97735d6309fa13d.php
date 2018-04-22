@@ -72,8 +72,35 @@
                 <button class="layui-btn" lay-submit lay-filter="formSearch" id="search">搜索</button>
             </div>
         </div>
+
     </form>
 
+    <form class="layui-form" action="" method="post">
+        <div class="layui-form-item toInline">
+            <label class="layui-form-label">时间</label>
+            <div class="layui-input-inline">
+                <input type="text" name="startTime" class="layui-input" id="time1">
+            </div>
+            <div class="layui-form-mid layui-word-aux"> ~ </div>
+        </div>
+        <div class="layui-form-item toInline">
+            <div class="layui-input-inline">
+                <input type="text" name="endTime" class="layui-input" id="time2">
+            </div>
+            <!--<button class="layui-btn" id="addGoods">添加</button>-->
+        </div>
+
+        <div class="layui-form-item toInline">
+            <div class="layui-input-inline">
+                <button class="layui-btn" lay-submit lay-filter="timeSelect">搜索</button>
+            </div>
+        </div>
+        <div class="layui-form-item toInline">
+            <div class="layui-input-inline">
+                <a href="javascript:;" id="excel" class="layui-btn layui-btn-normal toInline excel">导出excel</a>
+            </div>
+        </div>
+    </form>
     <!--<table id="order" lay-filter="order" class="layui-table">-->
         <!--<colgroup>-->
             <!--<col>-->

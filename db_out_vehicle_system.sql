@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-04-21 11:46:11
+Date: 2018-04-22 17:03:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -117,12 +117,12 @@ CREATE TABLE `t_manager` (
   UNIQUE KEY `User_uq` (`username`),
   KEY `RM_FID` (`role_id`) USING BTREE,
   CONSTRAINT `RM_FID` FOREIGN KEY (`id`) REFERENCES `t_role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_manager
 -- ----------------------------
-INSERT INTO `t_manager` VALUES ('1', 'admin', '202cb962ac59075b964b07152d234b70', '7', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
+INSERT INTO `t_manager` VALUES ('1', 'admin', '202cb962ac59075b964b07152d234b70', '7', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'fom5jpv6p7b77meefjusbor5t1');
 INSERT INTO `t_manager` VALUES ('2', '123', '250cf8b51c773f3f8dc8b4be867a9a02', '7', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
 INSERT INTO `t_manager` VALUES ('3', 'xiaoming', '202cb962ac59075b964b07152d234b70', '4', '2018-04-20 10:28:19', '2018-04-21 09:11:10', '0');
 

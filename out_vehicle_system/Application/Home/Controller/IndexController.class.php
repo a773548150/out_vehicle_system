@@ -3,41 +3,54 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
     public function index(){
-        $this->display("/index");
+        if ($this->isLogin()) {
+            $this->display("/publicOrder");
+        }
     }
 
-    public function login($username = "") {
+    public function toLogin() {
+        $this->display("/login");
+    }
+
+    public function login() {
+        session_start();
         $m = D("Driver");
         $rs = $m->login();
+        $username = I('post.username');
         if ($rs == 1) {
-            setcookie($username, $username);
+            $_SESSION['userLogined'] = true;
+            $_SESSION['username1'] = $username;
             $this->ajaxReturn("登录成功");
         } else {
+            $_SESSION['userLogined'] = false;
             $this->ajaxReturn("登录失败");
         }
     }
 
     public function isLogin() {
-        $username = I('post.username');
-        if ($_COOKIE[$username]) {
-            $this->ajaxReturn("已经登录");
+        if (isset($_SESSION['userLogined']) && $_SESSION['userLogined']) {
+            return true;
         } else {
-            $this->login($username);
+            $this->toLogin();
+            return false;
         }
     }
 
     public function toPublicOrder() {
-        $this->display("/publicOrder");
+        if ($this->isLogin()) {
+            $this->display("/publicOrder");
+        }
     }
 
     public function loginOff() {
-        $username = I('post.username');
-        setcookie($username, "");
+        session_destroy();
         $this->ajaxReturn("成功退出");
     }
 
     public function toAlertPassword() {
-        $this->display("/alertPassword");
+        if ($this->isLogin()) {
+            $this->display("/alertPassword");
+        }
     }
     public function alertPassword() {
         $m = D("Driver");

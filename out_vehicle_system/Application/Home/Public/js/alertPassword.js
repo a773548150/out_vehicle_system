@@ -16,7 +16,7 @@ $(window).ready(function (){
                         if (data==1) {
                             alert("修改密码成功");
                             $.cookie("username", "");
-                            window.location = "/Home/Index/index";
+                            window.location = "/Home/Index/toLogin";
                         } else if (data==2) {
                             alert("密码错误");
                         }

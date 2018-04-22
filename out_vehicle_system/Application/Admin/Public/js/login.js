@@ -7,7 +7,7 @@ $(window).ready(function(){
             var datas = data.field;
             var action = data.form.action;
             $.ajax({
-                url: "login",
+                url: "/Admin/Index/login",
                 type: 'post',
                 dataType: 'json',
                 data: datas,
