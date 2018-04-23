@@ -17,3 +17,12 @@ function json($code,$msg="",$count,$data=array()){
     echo json_encode($result);
     exit;
 }
+
+function json2($data=array()){
+    $result=array(
+        'data'=>$data
+    );
+    //输出json
+    echo json_encode($result);
+    exit;
+}

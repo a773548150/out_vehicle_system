@@ -1,7 +1,6 @@
 <?php
 namespace Home\Controller;
-use Think\Controller;
-class IndexController extends Controller {
+class IndexController extends BaseController {
     public function index(){
         if ($this->isLogin()) {
             $this->display("/publicOrder");
@@ -38,6 +37,10 @@ class IndexController extends Controller {
 
     public function toPublicOrder() {
         if ($this->isLogin()) {
+            $select = A("Order");
+            $select->selectUnTaking();
+            $select->selectUnFinish();
+            $select->selectFinish();
             $this->display("/publicOrder");
         }
     }
@@ -52,9 +55,19 @@ class IndexController extends Controller {
             $this->display("/alertPassword");
         }
     }
+
     public function alertPassword() {
         $m = D("Driver");
         $rs = $m->alertPassword();
         echo $rs;
     }
+
+    public function toOrderDetail() {
+        if ($this->isLogin()) {
+            $select = A("Order");
+            $select->showOrderDetail();
+            $this->display("/orderDetail");
+        }
+    }
+
 }
