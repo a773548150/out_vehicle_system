@@ -15,11 +15,11 @@ class IndexController extends BaseController {
         session_start();
         $m = D("Driver");
         $rs = $m->login();
-        $username = I('post.username');
-        if ($rs == 1) {
+        $username = I('post.mobile_number');
+        if ($rs) {
             $_SESSION['userLogined'] = true;
             $_SESSION['username1'] = $username;
-            $this->ajaxReturn("登录成功");
+            $this->ajaxReturn("/".$rs);
         } else {
             $_SESSION['userLogined'] = false;
             $this->ajaxReturn("登录失败");
@@ -70,4 +70,52 @@ class IndexController extends BaseController {
         }
     }
 
+    public function toPersonalOrder() {
+        if ($this->isLogin()) {
+            $select = A("Order");
+            $select->selectPersonalUnFinish();
+            $this->display("/personalOrder");
+        }
+    }
+
+    public function toPersonalUnTakingOrder() {
+        if ($this->isLogin()) {
+            $select = A("Order");
+            $select->selectUnTaking();
+            $this->display("/personalUnTakingOrder");
+        }
+    }
+
+    public function toPersonalOrderDetail() {
+        if ($this->isLogin()) {
+            $select = A("Order");
+            $select->showPersonalOrderDetail();
+            $this->display("/personalOrderDetail");
+        }
+    }
+
+    public function toPersonalOrderManage() {
+        if ($this->isLogin()) {
+            $select = A("Order");
+            $select->selectPersonalUnFinish();
+            $select->selectPersonalFinish();
+            $this->display("/personalOrderManage");
+        }
+    }
+
+    public function toFinishOrderDetail() {
+        if ($this->isLogin()) {
+            $select = A("Order");
+            $select->showFinishOrderDetail();
+            $this->display("/finishOrderDetail");
+        }
+    }
+
+    public function toPersonalMessage() {
+        if ($this->isLogin()) {
+            $select = A("Driver");
+            $select->showDriverMessage();
+            $this->display("/personalMessage");
+        }
+    }
 }

@@ -12,13 +12,14 @@ $(window).ready(function(){
                 dataType: 'json',
                 data: datas,
                 success: function (data, status) {
-                    if (data == "登录成功") {
-                        alert("登录成功");
-                        $.cookie("username", datas.mobile_number);
-                        window.location = "/Home/Index/toPublicOrder";
-                    } else if (data == "登录失败") {
+                    if (data == "登录失败") {
                         alert("账号或密码错误");
                         window.location = "/Home/Index/index";
+                    } else {
+                        alert("登录成功");
+                        $.cookie("username", datas.mobile_number);
+                        $.cookie('head', data);
+                        window.location = "/Home/Index/toPublicOrder";
                     }
                 },
                 fail: function (err, status) {

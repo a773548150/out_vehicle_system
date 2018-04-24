@@ -4,7 +4,9 @@ $(window).ready(function() {
 
         //执行一个laydate实例
         laydate.render({
-            elem: '#test1' //指定元素
+            elem: '#test1', //指定元素
+            format: 'yyyy-MM-dd HH:mm',
+            type: 'datetime'
         });
     });
 

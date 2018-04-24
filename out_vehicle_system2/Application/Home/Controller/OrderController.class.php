@@ -32,4 +32,35 @@ class OrderController extends BaseController {
         $rs = $m->makeOrder();
         echo $rs;
     }
+
+    public function selectPersonalUnFinish() {
+        $m = D("Order");
+        $rs = $m->selectPersonalUnFinish();
+        $this->assign('personalUnFinishData', $rs);
+    }
+
+    public function selectPersonalFinish() {
+        $m = D("Order");
+        $rs = $m->selectPersonalFinish();
+        $this->assign('personalFinishData', $rs);
+    }
+
+    public function showPersonalOrderDetail() {
+        $m = D("Order");
+        $rs = $m->showPersonalOrderDetail();
+        $this->assign('data', $rs);
+    }
+
+    public function makeServiceOrder() {
+        $m = D("Order");
+        $rs = $m->makeServiceOrder();
+        echo $rs;
+    }
+
+    public function showFinishOrderDetail() {
+        $m = D("Order");
+        $rs = $m->showPersonalOrderDetail();
+        $this->assign('data', $rs);
+    }
+
 }

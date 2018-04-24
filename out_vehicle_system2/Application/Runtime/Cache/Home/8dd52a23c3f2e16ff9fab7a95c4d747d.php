@@ -2,15 +2,38 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="/Public/layui/css/layui.css">
-    <link rel="stylesheet" type="text/css" href="/Application/Admin/Public/css/alertPassword.css">
+    <link rel="stylesheet" type="text/css" href="/Application/Home/Public/css/alertPassword.css">
     <title>修改密码</title>
 </head>
 <body>
+<ul class="layui-nav" lay-filter="">
+    <li class="layui-nav-item"><a href="/Home/index/toPublicOrder">公共订单</a></li>
+    <li class="layui-nav-item">
+        <a href="/Home/index/toPersonalOrder">个人订单</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="/Home/index/toPersonalUnTakingOrder">接订单</a></dd>
+            <dd><a href="/Home/index/toPersonalOrderManage">订单管理</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item layui-this">
+        <a href="/Home/index/toPersonalOrder">个人中心</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="/Home/index/toAlertPassword" class="layui-this">修改密码</a></dd>
+            <dd><a href="/Home/index/toPersonalMessage">个人信息</a></dd>
+            <dd><a href="/Home/index/toPersonalOrderManage">个人订单管理</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item">
+        <a href=""><img src="#" class="layui-nav-img">我</a>
+        <dl class="layui-nav-child">
+            <dd><a href="/Home/Index/toAlertPassword">修改密码</a></dd>
+            <dd><a href="javascript:;">安全管理</a></dd>
+            <dd><a href="/Home/Index/loginOff" id="loginOff">退出</a></dd>
+        </dl>
+    </li>
+</ul>
 
-<a href="javascript:history.go(-1)" class="layui-btn" id="alert-password">返回</a>
-
-<h1>修改密码</h1>
-<form class="layui-form" action="alertPassword" method="post">
+<form class="layui-form" action="alertPassword" method="post" id="all">
     <div class="layui-form-item">
         <label class="layui-form-label">手机号</label>
         <div class="layui-input-inline">
@@ -56,6 +79,7 @@
 <script src="/Public/layui/layui.all.js"></script>
 <script src="/Public/jquery-3.3.1.min.js"></script>
 <script src="/Public/jquery.cookie.js"></script>
+<script src="/Application/Home/Common/common.js"></script>
 <script src="/Application/Home/Public/js/alertPassword.js"></script>
 </body>
 </html>

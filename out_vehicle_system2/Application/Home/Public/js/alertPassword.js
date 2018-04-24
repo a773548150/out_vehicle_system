@@ -1,4 +1,6 @@
 $(window).ready(function (){
+
+
     $("#mobile_number").val($.cookie("username"));
     layui.use('form', function(){
         var form = layui.form;
