@@ -10,14 +10,15 @@ $(window).ready(function (){
             var datas = data.field;
             if (datas.newPassword == datas.newPassword2) {
                 $.ajax({
-                    url: "alertPassword",
+                    url: "/Home/Index/alertPassword",
                     type: 'post',
                     dataType: 'json',
                     data: datas,
                     success: function (data, status) {
                         if (data==1) {
                             alert("修改密码成功");
-                            $.cookie("username", "");
+                            $.cookie("username", "", {expires:-1});
+                            $.cookie("head", "", {expires:-1});
                             window.location = "/Home/Index/toLogin";
                         } else if (data==2) {
                             alert("密码错误");

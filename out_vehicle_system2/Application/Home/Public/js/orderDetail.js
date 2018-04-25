@@ -1,4 +1,10 @@
 $(window).ready(function() {
+    layui.use('element', function () {
+        var element = layui.element;
+
+        //…
+    });
+
     layui.use('laydate', function(){
         var laydate = layui.laydate;
 

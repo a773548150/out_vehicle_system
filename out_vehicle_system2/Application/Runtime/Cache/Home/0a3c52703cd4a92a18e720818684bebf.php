@@ -18,7 +18,7 @@
         </dl>
     </li>
     <li class="layui-nav-item">
-        <a href="/Home/index/toPersonalOrder">个人中心</a>
+        <a href="/Home/index/toPersonalMessage">个人中心</a>
         <dl class="layui-nav-child"> <!-- 二级菜单 -->
             <dd><a href="/Home/index/toAlertPassword">修改密码</a></dd>
             <dd><a href="/Home/index/toPersonalMessage">个人信息</a></dd>
@@ -141,6 +141,7 @@
 <script src="/Public/jquery-3.3.1.min.js"></script>
 <script src="/Public/layui/layui.js"></script>
 <script src="/Public/jquery.cookie.js"></script>
+<script src="/Application/Home/Common/common.js"></script>
 <script src="/Application/Home/Public/js/personalOrderDetail.js"></script>
 </body>
 </html>

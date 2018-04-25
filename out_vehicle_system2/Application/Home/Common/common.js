@@ -9,7 +9,8 @@ $(window).ready(function (){
             success: function (data, status) {
                 alert(data);
                 if (data == "成功退出") {
-                    $.cookie("username");
+                    $.cookie("username", "", { path: "/"}, {expires:-1});
+                    $.cookie("head", "", { path: "/"}, {expires:-1});
                     window.location = "/Home/Index/toLogin";
                 }
             },

@@ -17,8 +17,8 @@ $(window).ready(function(){
                         window.location = "/Home/Index/index";
                     } else {
                         alert("登录成功");
-                        $.cookie("username", datas.mobile_number);
-                        $.cookie('head', data);
+                        $.cookie("username", datas.mobile_number, { path: "/"});
+                        $.cookie('head', data, { path: "/"});
                         window.location = "/Home/Index/toPublicOrder";
                     }
                 },

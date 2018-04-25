@@ -19,7 +19,7 @@
         </dl>
     </li>
     <li class="layui-nav-item">
-        <a href="/Home/index/toPersonalOrder">个人中心</a>
+        <a href="/Home/index/toPersonalMessage">个人中心</a>
         <dl class="layui-nav-child"> <!-- 二级菜单 -->
             <dd><a href="/Home/index/toAlertPassword">修改密码</a></dd>
             <dd><a href="/Home/index/toPersonalMessage">个人信息</a></dd>
@@ -50,7 +50,8 @@
                             <?php case "out_destination": ?><th>目的地</th><td><?php echo ($vi); ?></td><?php break;?>
                             <?php case "goods_name": ?><th>商品</th><td><?php echo ($vi); ?></td><?php break;?>
                             <?php case "goods_quantity": ?><th>数量</th><td><?php echo ($vi); ?></td><?php break;?>
-                            <?php case "start_time": ?><th>出发时间</th><td><?php echo ($vi); ?></td><?php break; endswitch;?>
+                            <?php case "start_time": ?><th>出发时间</th><td><?php echo ($vi); ?></td><?php break;?>
+                            <?php case "license_plate": ?><th>车牌号</th><td><?php echo ($vi); ?></td><?php break; endswitch;?>
                     </tr><?php endforeach; endif; ?>
             </table>
         </div><?php endforeach; endif; ?>

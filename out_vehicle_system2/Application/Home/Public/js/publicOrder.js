@@ -5,41 +5,41 @@ $(window).ready(function() {
         //…
     });
 
-    $.ajax({
-        url: "/Home/Order/selectUnTaking",
-        type: 'post',
-        dataType: 'json',
-        success: function (data, status) {
-            console.log(data);
-        },
-        fail: function (err, status) {
-            console.log(err)
-        }
-    });
-
-    $.ajax({
-        url: "/Home/Order/selectUnFinish",
-        type: 'post',
-        dataType: 'json',
-        success: function (data, status) {
-            console.log(data);
-        },
-        fail: function (err, status) {
-            console.log(err)
-        }
-    });
-
-    $.ajax({
-        url: "/Home/Order/selectFinish",
-        type: 'post',
-        dataType: 'json',
-        success: function (data, status) {
-            console.log(data);
-        },
-        fail: function (err, status) {
-            console.log(err)
-        }
-    });
+    // $.ajax({
+    //     url: "/Home/Order/selectUnTaking",
+    //     type: 'post',
+    //     dataType: 'json',
+    //     success: function (data, status) {
+    //         console.log(data);
+    //     },
+    //     fail: function (err, status) {
+    //         console.log(err)
+    //     }
+    // });
+    //
+    // $.ajax({
+    //     url: "/Home/Order/selectUnFinish",
+    //     type: 'post',
+    //     dataType: 'json',
+    //     success: function (data, status) {
+    //         console.log(data);
+    //     },
+    //     fail: function (err, status) {
+    //         console.log(err)
+    //     }
+    // });
+    //
+    // $.ajax({
+    //     url: "/Home/Order/selectFinish",
+    //     type: 'post',
+    //     dataType: 'json',
+    //     success: function (data, status) {
+    //         console.log(data);
+    //     },
+    //     fail: function (err, status) {
+    //         console.log(err)
+    //     }
+    // });
 
     $(".unTakingAll .tableAll").click(function() {
         var id = $(this).attr("id");
