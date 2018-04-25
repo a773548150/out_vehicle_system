@@ -10,6 +10,11 @@ $(window).ready(function() {
     //全局变量
     var url = "/Admin/Order/searchOrder?missionStatus=3";
     var editData = "";
+    var selectDatas = {};
+    selectDatas.missionStatus = 3;
+
+    var startTime;
+    var endTime;
 
     layui.use('element', function () {
         var element = layui.element;
@@ -21,8 +26,6 @@ $(window).ready(function() {
 
     layui.use('form', function () {
         var form = layui.form;
-        var selectDatas = {};
-        selectDatas.missionStatus = 3;
         var  missionStatus = $.getUrlParam('missionStatus');
         if (missionStatus==="1") {
             $("select[name=orderStatus]").val("1");
@@ -39,7 +42,10 @@ $(window).ready(function() {
         form.on('submit(formSearch)', function (data) {
             var datas = data.field;
             datas.orderStatus = selectDatas.missionStatus;
-            url = url +"&orderNumber=" + datas.number;
+            startTime = datas.startTime;
+            endTime = datas.endTime;
+            selectDatas.number = datas.number;
+            var url = "/Admin/Order/searchOrder?missionStatus=" + datas.orderStatus +"&orderNumber=" + datas.number +"&startTime=" + startTime + "&endTime=" + endTime;
             layui.use('table', function() {
                 var table = layui.table;
                 table.reload('order', {
@@ -64,7 +70,7 @@ $(window).ready(function() {
         form.on('select(selectStatus)', function(data){
             selectDatas.missionStatus = data.value;
 
-            url = "/Admin/Order/searchOrder?missionStatus=" + selectDatas.missionStatus;
+            var url = "/Admin/Order/searchOrder?missionStatus=" + selectDatas.missionStatus;
             layui.use('table', function() {
                 var table = layui.table;
                 table.reload('order', {
@@ -86,17 +92,6 @@ $(window).ready(function() {
             return false;
         });
 
-        form.on('submit(timeSelect)', function(data){
-            var datas = data.field;
-            url = "/Admin/Order/timeSelect?" +"&startTime=" + datas.startTime + "&endTime=" + datas.endTime;
-            layui.use('table', function() {
-                var table = layui.table;
-                table.reload('order', {
-                    url: url
-                });
-            });
-            return false;
-        });
     });
 
     layui.use('laydate', function(){
@@ -131,7 +126,7 @@ $(window).ready(function() {
             ,cols: [[ //表头
                 {field: 'number', title: '订单号', width:190, sort: true, fixed: 'left'}
                 ,{field: 'udid', title: '订单编号', width:190, sort: true, fixed: 'left'}
-                ,{field: 'create_time', title: '出发时间', width:160, edit: "text"}
+                ,{field: 'start_time', title: '出发时间', width:160, edit: "text"}
                 ,{field: 'out_number', title: '出车车牌号', width:120, sort: true, edit: "text"}
                 ,{field: 'out_destination', title: '目的地', width: 177, edit: "text"}
                 ,{field: 'mission_status', title: '状态', width: 80, sort: true, edit: "text"}
@@ -212,6 +207,7 @@ $(window).ready(function() {
     $("#excel").click(function () {
         var startTime = $("input[name='startTime']").val();
         var endTime = $("input[name='endTime']").val();
-        window.location = "/Admin/Order/expUser?startTime=" + startTime + "&endTime=" + endTime;
+
+        window.location = "/Admin/Order/expUser?missionStatus=" + selectDatas.missionStatus +"&orderNumber=" + selectDatas.number +"&startTime=" + startTime + "&endTime=" + endTime;
     });
 });

@@ -132,6 +132,8 @@ class OrderController extends BaseController {
         if (I("get.startTime") && I("get.endTime")) {
             $startTime = I("get.startTime");
             $endTime = I("get.endTime");
+            $data['mission_status'] = I('get.missionStatus');
+            $data['number'] = array('LIKE', "%".I('get.orderNumber')."%");
             $data["start_time"] = array(array('gt', $startTime), array('lt', $endTime));
             $xlsData  = $xlsModel->where($data)->order('id desc')->Field('id,number,udid,create_time,vehicle_id,out_destination,mission_status,driver_id,pick_up_order,contract_number,out_of_stock_message,goods_id,pick_up_quantity,pick_up_time,closing_unit')->select();
         } else {

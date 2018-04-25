@@ -82,6 +82,11 @@ class OrderModel extends BaseModel {
     public function searchOrder() {
         $m = M("order");
 
+        $startTime = I("get.startTime");
+        $endTime = I("get.endTime");
+        if ($startTime && $endTime) {
+            $data["start_time"] = array(array('egt', $startTime), array('elt', $endTime));
+        }
         $data['mission_status'] = I('get.missionStatus');
         $data['number'] = array('LIKE', "%".I('get.orderNumber')."%");
         $data['status'] = 1;
@@ -121,15 +126,15 @@ class OrderModel extends BaseModel {
         return $res;
     }
 
-    public function timeSelect() {
-        $m = M("order");
-        $startTime = I("get.startTime");
-        $endTime = I("get.endTime");
-        $page = I('get.page');
-        $limit = I('get.limit');
-        $data["start_time"] = array(array('gt', $startTime), array('lt', $endTime));
-        $res = $m->where($data)->order('id desc')->page($page, $limit)->select();
-        $res = $this->findForeign($res);
-        return $res;
-    }
+//    public function timeSelect() {
+//        $m = M("order");
+//        $startTime = I("get.startTime");
+//        $endTime = I("get.endTime");
+//        $page = I('get.page');
+//        $limit = I('get.limit');
+//        $data["start_time"] = array(array('gt', $startTime), array('lt', $endTime));
+//        $res = $m->where($data)->order('id desc')->page($page, $limit)->select();
+//        $res = $this->findForeign($res);
+//        return $res;
+//    }
 }
