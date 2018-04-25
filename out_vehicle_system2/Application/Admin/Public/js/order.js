@@ -13,7 +13,6 @@ $(window).ready(function(){
         //监听提交
         form.on('submit(formDemo)', function(data){
             var datas = data.field;
-            datas.goodsName = $("#selectGoods option:selected").text();
             $.ajax({
                 url: "/Admin/Order/makeOrder",
                 type: 'post',

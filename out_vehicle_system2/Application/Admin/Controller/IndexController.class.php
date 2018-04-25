@@ -127,4 +127,12 @@ class IndexController extends BaseController {
             $this->display("/addUser");
         }
     }
+
+    public function toLogManage() {
+        if($this->isLogin()) {
+            $permissions = A("Role");
+            $permissions->findPermissions();
+            $this->display("/logManage");
+        }
+    }
 }

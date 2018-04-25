@@ -38,10 +38,10 @@
                 <dd><a href="/Admin/Index/toUser">后台用户管理</a></dd>
             </dl>
         </li><?php endif; ?>
-    <?php if(in_array(($permissions[0][manage_diary]), explode(',',"1"))): ?><li class="layui-nav-item">
+    <?php if(in_array(($permissions[0][manage_log]), explode(',',"1"))): ?><li class="layui-nav-item">
             <a href="javascript:;">操作日记</a>
             <dl class="layui-nav-child">
-
+                <dd><a href="/Admin/Index/toLogManage">日记管理</a></dd>
             </dl>
         </li><?php endif; ?>
 </ul>
@@ -64,12 +64,16 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">商品</label>
-
             <div class="layui-input-inline">
-                <select name="city" lay-verify="required" id="selectGoods">
-                    <?php if(is_array($goodsName)): foreach($goodsName as $key=>$vo): ?><option value="<?php echo ($key); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; ?>
-                </select>
+                <input type="text" name="goodsName" id="goodsName" required  lay-verify="required" placeholder="请输入商品名" autocomplete="off" class="layui-input">
             </div>
+            <!--<div class="layui-input-inline">-->
+                <!--<select name="city" lay-verify="required" id="selectGoods">-->
+                    <!--<?php if(is_array($goodsName)): foreach($goodsName as $key=>$vo): ?>-->
+                        <!--<option value="<?php echo ($key); ?>"><?php echo ($vo); ?></option>-->
+                    <!--<?php endforeach; endif; ?>-->
+                <!--</select>-->
+            <!--</div>-->
             <!--<button class="layui-btn" id="addGoods">添加</button>-->
         </div>
         <div class="layui-form-item">

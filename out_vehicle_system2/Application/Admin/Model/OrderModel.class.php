@@ -21,16 +21,28 @@ class OrderModel extends BaseModel {
         $m = M("order");
         $G = M("goods");
         $C = A("Order");
+        $L = A("Log");
+
         $data['number'] = $C->orderNumber();
         $data['udid'] = $C->orderNumber();
         $data['out_destination'] = trim(I('post.destination'));
-        $goodsName = trim(I('post.goodsName'));
-        $goodsId = $G->where(array("name" => $goodsName))->getField("id");
+        $goods["name"] = trim(I('post.goodsName'));
+        $nowTime = date("Ymdhis");
+        $sixRand = rand('100000', '999999');
+        $goods["number"] = $nowTime.$sixRand;
+        $goods['quantity'] = trim(I('post.number'));
+        $goodsId = $G->data($goods)->add();
         $data['goods_id'] = $goodsId;
         $data['goods_quantity'] = trim(I('post.number'));
         $data['start_time'] = trim(I('post.startTime'));
         $data['create_time'] = date("Y-m-d h:i:s");
         $result = $m->data($data)->add();
+        if($result){
+            $insertData = array();
+            $insertData["table_id"] = $result;
+            $insertData["table_name"] = "order";
+            $L->insert($insertData);
+        }
         return $result;
     }
 
@@ -110,19 +122,38 @@ class OrderModel extends BaseModel {
 
     public function deleteOrder() {
         $m = M("order");
+        $L = A("Log");
         $data["id"] = I("post.id");
         $data2["status"] = 0;
         $result = $m->where($data)->save($data2);
+        if($result){
+            $deleteData = array();
+            $deleteData["table_id"] = $data["id"];
+            $deleteData["table_name"] = "order";
+            $L->delete($deleteData);
+        }
         echo $result;
     }
 
     public function editOrder() {
         $m = M("order");
+        $L = A("Log");
         $field = I('post.field');
         $value = I('post.value');
         $lim["id"] = I('post.id');
         $data[$field] = $value;
+        $oldValue = $m->where($lim)->getField($field);
         $res = $m->where($lim)->save($data);
+
+        if($res){
+            $updateData = array();
+            $updateData["table_id"] = $lim["id"];
+            $updateData["table_name"] = "order";
+            $updateData["key"] = $field;
+            $updateData["value"] = $oldValue;
+            $updateData["current_value"] = $value;
+            $L->update($updateData);
+        }
         return $res;
     }
 
