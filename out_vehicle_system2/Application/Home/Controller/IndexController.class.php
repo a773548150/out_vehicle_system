@@ -1,16 +1,13 @@
 <?php
 namespace Home\Controller;
 class IndexController extends BaseController {
-    public function index(){
-        if ($this->isLogin()) {
-            $this->display("/publicOrder");
-        }
-    }
 
+    //跳转到登录页面
     public function toLogin() {
         $this->display("/login");
     }
 
+    //登录
     public function login() {
         session_start();
         $m = D("Driver");
@@ -26,6 +23,7 @@ class IndexController extends BaseController {
         }
     }
 
+    //判断是否登录
     public function isLogin() {
         if (isset($_SESSION['userLogined']) && $_SESSION['userLogined']) {
             return true;
@@ -35,6 +33,13 @@ class IndexController extends BaseController {
         }
     }
 
+    //退出登录
+    public function loginOff() {
+        session_destroy();
+        $this->ajaxReturn("成功退出");
+    }
+
+    //跳转到公共订单页面
     public function toPublicOrder() {
         if ($this->isLogin()) {
             $select = A("Order");
@@ -45,23 +50,21 @@ class IndexController extends BaseController {
         }
     }
 
-    public function loginOff() {
-        session_destroy();
-        $this->ajaxReturn("成功退出");
-    }
-
+    //跳转到修改密码页面
     public function toAlertPassword() {
         if ($this->isLogin()) {
             $this->display("/alertPassword");
         }
     }
 
+    //修改密码
     public function alertPassword() {
         $m = D("Driver");
         $rs = $m->alertPassword();
         echo $rs;
     }
 
+    //跳转到订单详情页面
     public function toOrderDetail() {
         if ($this->isLogin()) {
             $select = A("Order");
@@ -70,6 +73,7 @@ class IndexController extends BaseController {
         }
     }
 
+    //跳转到个人订单页面
     public function toPersonalOrder() {
         if ($this->isLogin()) {
             $select = A("Order");
@@ -78,6 +82,7 @@ class IndexController extends BaseController {
         }
     }
 
+    //跳转到接订单页面
     public function toPersonalUnTakingOrder() {
         if ($this->isLogin()) {
             $select = A("Order");
@@ -86,6 +91,7 @@ class IndexController extends BaseController {
         }
     }
 
+    //跳转到个人订单详情页面，从个人订单已接订单进入
     public function toPersonalOrderDetail() {
         if ($this->isLogin()) {
             $select = A("Order");
@@ -94,6 +100,7 @@ class IndexController extends BaseController {
         }
     }
 
+    //跳转到个人订单管理页面
     public function toPersonalOrderManage() {
         if ($this->isLogin()) {
             $select = A("Order");
@@ -103,6 +110,7 @@ class IndexController extends BaseController {
         }
     }
 
+    //跳转到完成订单详情页面，从订单管理进入
     public function toFinishOrderDetail() {
         if ($this->isLogin()) {
             $select = A("Order");
@@ -111,6 +119,7 @@ class IndexController extends BaseController {
         }
     }
 
+    //跳转到个人管理页面
     public function toPersonalMessage() {
         if ($this->isLogin()) {
             $select = A("Driver");

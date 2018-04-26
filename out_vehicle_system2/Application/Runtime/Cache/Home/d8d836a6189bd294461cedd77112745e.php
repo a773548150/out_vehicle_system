@@ -21,8 +21,8 @@
         <a href="/Home/index/toPersonalMessage">个人中心</a>
         <dl class="layui-nav-child"> <!-- 二级菜单 -->
             <dd><a href="/Home/index/toAlertPassword">修改密码</a></dd>
-            <dd><a href="/Home/index/toPersonalMessage">个人信息</a></dd>
-            <dd><a href="/Home/index/toPersonalOrderManage" class="layui-this">个人订单管理</a></dd>
+            <dd><a href="/Home/index/toPersonalMessage" class="layui-this">个人信息</a></dd>
+            <dd><a href="/Home/index/toPersonalOrderManage">个人订单管理</a></dd>
         </dl>
     </li>
     <li class="layui-nav-item">

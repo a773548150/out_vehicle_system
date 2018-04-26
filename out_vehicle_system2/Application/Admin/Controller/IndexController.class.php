@@ -9,7 +9,7 @@
 namespace Admin\Controller;
 
 class IndexController extends BaseController {
-
+    //跳转到主页
     public function index() {
         if($this->isLogin()){
             $permissions = A("Role");
@@ -18,6 +18,7 @@ class IndexController extends BaseController {
         }
     }
 
+    //登录，用session存放判断
     public function login() {
         session_start();
         $username = I('post.username');
@@ -33,17 +34,13 @@ class IndexController extends BaseController {
         }
     }
 
+    //退出登录
     public function loginOff() {
         session_destroy();
         $this->ajaxReturn("成功退出");
     }
 
-//    public function signUp() {
-//        $m = D("Manager");
-//        $rs = $m->signUp();
-//        echo $rs;
-//    }
-
+    //判断是否登录
     public function isLogin() {
         if (isset($_SESSION['logined']) && $_SESSION['logined']) {
             return true;
@@ -53,22 +50,26 @@ class IndexController extends BaseController {
         }
     }
 
+    //跳转到登录页面
     public function toLogin() {
         $this->display("/login");
     }
 
+    //跳转到修改密码页面
     public function toAlertPassword() {
         if($this->isLogin()) {
             $this->display("/alertPassword");
         }
     }
 
+    //修改密码
     public function alertPassword() {
         $m = D("Manager");
         $rs = $m->alertPassword();
         echo $rs;
     }
 
+    //跳转到新添订单页面
     public function toOrder() {
         if($this->isLogin()) {
             $goods = A("Order");
@@ -79,6 +80,7 @@ class IndexController extends BaseController {
         }
     }
 
+    //跳转到订单管理页面
     public function toOrderManager() {
         if($this->isLogin()) {
             $permissions = A("Role");
@@ -87,6 +89,7 @@ class IndexController extends BaseController {
         }
     }
 
+    //跳转到司机管理页面
     public function toDriver() {
         if($this->isLogin()) {
             $permissions = A("Role");
@@ -95,6 +98,7 @@ class IndexController extends BaseController {
         }
     }
 
+    //跳转到车辆管理页面
     public function toVehicle() {
         if($this->isLogin()) {
             $permissions = A("Role");
@@ -103,6 +107,7 @@ class IndexController extends BaseController {
         }
     }
 
+    //跳转到权限管理页面
     public function toRole() {
         if($this->isLogin()){
             $Role = A("Role");
@@ -114,12 +119,14 @@ class IndexController extends BaseController {
         }
     }
 
+    //跳转到商品管理页面
     public function toGoods() {
         if($this->isLogin()) {
             $this->display("/goods");
         }
     }
 
+    //跳转到后台用户管理页面
     public function toUser() {
         if($this->isLogin()) {
             $permissions = A("Role");
@@ -128,6 +135,7 @@ class IndexController extends BaseController {
         }
     }
 
+    //跳转到日记管理页面
     public function toLogManage() {
         if($this->isLogin()) {
             $permissions = A("Role");

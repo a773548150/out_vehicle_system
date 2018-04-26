@@ -9,17 +9,20 @@
 namespace Admin\Controller;
 
 class RoleController extends BaseController {
+    //获取所有角色名
     public function role() {
         $m = D("Role");
         $res = $m->role();
         $this->assign('roleName', $res);
     }
 
+    //获取所有用户名
     public function user() {
         $m = D("Role");
         $res = $m->user();
         $this->assign('userName', $res);
     }
+
     public function addRole() {
         $m = D("Role");
         $res = $m->addRole();
@@ -65,6 +68,7 @@ class RoleController extends BaseController {
         echo $res;
     }
 
+    //给用户添加权限
     public function addPermissions() {
         $m = D("Role");
         $res = $m->addPermissions();
@@ -77,6 +81,7 @@ class RoleController extends BaseController {
         echo $rs;
     }
 
+    //返回用户权限
     public function findPermissions() {
         $m = D("Role");
         $res = $m->findPermissions();

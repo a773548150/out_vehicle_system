@@ -10,12 +10,11 @@ namespace Admin\Model;
 
 class OrderModel extends BaseModel {
 
-    public function goods() {
-        $m = M("goods");
-        $result = $m->getField("name", true);
-        return $result;
-    }
-
+//    public function goods() {
+//        $m = M("goods");
+//        $result = $m->getField("name", true);
+//        return $result;
+//    }
 
     public function makeOrder() {
         $m = M("order");
@@ -45,19 +44,6 @@ class OrderModel extends BaseModel {
         }
         return $result;
     }
-
-//    public function addGoods() {
-//        $G = M("goods");
-//        $C = A("Order");
-//        $data["name"] = trim(I('post.goodsName'));
-//        $data["number"] = $C->goodsNumber();
-//        $result = $G->data($data)->add();
-//        return $result;
-//    }
-//    public function searchType() {
-//        $m = M("order");
-//
-//    }
 
     public function findForeign($result){
         $G = M("goods");
@@ -157,15 +143,4 @@ class OrderModel extends BaseModel {
         return $res;
     }
 
-//    public function timeSelect() {
-//        $m = M("order");
-//        $startTime = I("get.startTime");
-//        $endTime = I("get.endTime");
-//        $page = I('get.page');
-//        $limit = I('get.limit');
-//        $data["start_time"] = array(array('gt', $startTime), array('lt', $endTime));
-//        $res = $m->where($data)->order('id desc')->page($page, $limit)->select();
-//        $res = $this->findForeign($res);
-//        return $res;
-//    }
 }

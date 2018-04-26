@@ -1,3 +1,4 @@
+//获取url参数
 (function ($) {
     $.getUrlParam = function (name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -8,7 +9,6 @@
 
 $(window).ready(function() {
     //全局变量
-    var url = "/Admin/Order/searchOrder?missionStatus=3";
     var editData = "";
     var selectDatas = {};
     selectDatas.missionStatus = 3;
@@ -52,18 +52,6 @@ $(window).ready(function() {
                     url: url
                 });
             });
-            // $.ajax({
-            //     url: "/Admin/Order/searchOrder",
-            //     type: 'post',
-            //     dataType: 'json',
-            //     data: datas,
-            //     success: function (data, status) {
-            //         alert(data);
-            //     },
-            //     fail: function (err, status) {
-            //         console.log(err)
-            //     }
-            // });
             return false;
         });
 
@@ -77,18 +65,6 @@ $(window).ready(function() {
                     url: url
                 });
             });
-            // $.ajax({
-            //     url: "/Admin/Order/searchType",
-            //     type: 'post',
-            //     dataType: 'json',
-            //     data: selectDatas,
-            //     success: function (data, status) {
-            //         alert(data);
-            //     },
-            //     fail: function (err, status) {
-            //         console.log(err)
-            //     }
-            // });
             return false;
         });
 
@@ -142,6 +118,7 @@ $(window).ready(function() {
             ]]
         });
 
+        //绑定删除和编辑按钮
         table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
